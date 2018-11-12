@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+  <item
+    android:id="@+id/action_calender"
+    android:enabled="true"
+    android:icon="@drawable/Calender"
+    android:title="Calender"
+    app:showAsAction="ifRoom"
+    />
+
+  <item
+    android:id="@+id/action_home"
+    android:enabled="true"
+    android:icon="@drawable/Home"
+    android:title="Home"
+    app:showAsAction="ifRoom"
+   />
+
+  <item
+    android:id="@+id/action_workout"
+    android:enabled="true"
+    android:icon="@drawable/Workout"
+    android:title="Workout"
+    app:showAsAction="ifRoom"
+  />
+
+  <item
+    android:id="@+id/action_settings"
+    android:enabled="true"
+    android:icon="@drawable/Settings"
+    android:title="Settings"
+    app:showAsAction="ifRoom"
+  />
+
+</menu>
