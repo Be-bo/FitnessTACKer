@@ -65,10 +65,10 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\layout\WorkoutFragment.xml" />
-    <AndroidResource Include="Resources\layout\HomeFragment.xml" />
-    <AndroidResource Include="Resources\layout\SettingsFragment.xml" />
-    <AndroidResource Include="Resources\layout\CalendarFragment.xml" />
+    <AndroidResource Include="Resources\layout\CalendarFragment.axml" />
+    <AndroidResource Include="Resources\layout\SettingsFragment.axml" />
+    <AndroidResource Include="Resources\layout\HomeFragment.axml" />
+    <AndroidResource Include="Resources\layout\WorkoutFragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
