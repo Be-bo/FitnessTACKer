@@ -31,7 +31,6 @@ namespace FitnessTACKer
 		public partial class Animation
 		{
 			
-<<<<<<< HEAD
 			// aapt resource value: 0x7f050000
 			public const int abc_fade_in = 2131034112;
 			
@@ -40,347 +39,10 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f050002
 			public const int abc_grow_fade_in_from_bottom = 2131034114;
-=======
-			// aapt resource value: 0x7f010004
-			public const int fastScrollEnabled = 2130771972;
-			
-			// aapt resource value: 0x7f010007
-			public const int fastScrollHorizontalThumbDrawable = 2130771975;
-			
-			// aapt resource value: 0x7f010008
-			public const int fastScrollHorizontalTrackDrawable = 2130771976;
-			
-			// aapt resource value: 0x7f010005
-			public const int fastScrollVerticalThumbDrawable = 2130771973;
-			
-			// aapt resource value: 0x7f010006
-			public const int fastScrollVerticalTrackDrawable = 2130771974;
-			
-			// aapt resource value: 0x7f010010
-			public const int font = 2130771984;
-			
-			// aapt resource value: 0x7f010009
-			public const int fontProviderAuthority = 2130771977;
-			
-			// aapt resource value: 0x7f01000c
-			public const int fontProviderCerts = 2130771980;
-			
-			// aapt resource value: 0x7f01000d
-			public const int fontProviderFetchStrategy = 2130771981;
-			
-			// aapt resource value: 0x7f01000e
-			public const int fontProviderFetchTimeout = 2130771982;
-			
-			// aapt resource value: 0x7f01000a
-			public const int fontProviderPackage = 2130771978;
-			
-			// aapt resource value: 0x7f01000b
-			public const int fontProviderQuery = 2130771979;
-			
-			// aapt resource value: 0x7f01000f
-			public const int fontStyle = 2130771983;
-			
-			// aapt resource value: 0x7f010011
-			public const int fontWeight = 2130771985;
-			
-			// aapt resource value: 0x7f010000
-			public const int layoutManager = 2130771968;
-			
-			// aapt resource value: 0x7f010002
-			public const int reverseLayout = 2130771970;
-			
-			// aapt resource value: 0x7f010001
-			public const int spanCount = 2130771969;
-			
-			// aapt resource value: 0x7f010003
-			public const int stackFromEnd = 2130771971;
-			
-			static Attribute()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Attribute()
-			{
-			}
-		}
-		
-		public partial class Boolean
-		{
-			
-			// aapt resource value: 0x7f080000
-			public const int abc_action_bar_embed_tabs = 2131230720;
-			
-			static Boolean()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Boolean()
-			{
-			}
-		}
-		
-		public partial class Color
-		{
-			
-			// aapt resource value: 0x7f090000
-			public const int notification_action_color_filter = 2131296256;
-			
-			// aapt resource value: 0x7f090001
-			public const int notification_icon_bg_color = 2131296257;
-			
-			// aapt resource value: 0x7f090002
-			public const int ripple_material_light = 2131296258;
-			
-			// aapt resource value: 0x7f090003
-			public const int secondary_text_default_material_light = 2131296259;
-			
-			static Color()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Color()
-			{
-			}
-		}
-		
-		public partial class Dimension
-		{
-			
-			// aapt resource value: 0x7f05000a
-			public const int compat_button_inset_horizontal_material = 2131034122;
-			
-			// aapt resource value: 0x7f05000b
-			public const int compat_button_inset_vertical_material = 2131034123;
-			
-			// aapt resource value: 0x7f05000c
-			public const int compat_button_padding_horizontal_material = 2131034124;
-			
-			// aapt resource value: 0x7f05000d
-			public const int compat_button_padding_vertical_material = 2131034125;
-			
-			// aapt resource value: 0x7f05000e
-			public const int compat_control_corner_material = 2131034126;
-			
-			// aapt resource value: 0x7f050000
-			public const int fastscroll_default_thickness = 2131034112;
-			
-			// aapt resource value: 0x7f050001
-			public const int fastscroll_margin = 2131034113;
-			
-			// aapt resource value: 0x7f050002
-			public const int fastscroll_minimum_range = 2131034114;
-			
-			// aapt resource value: 0x7f050003
-			public const int item_touch_helper_max_drag_scroll_per_frame = 2131034115;
-			
-			// aapt resource value: 0x7f050004
-			public const int item_touch_helper_swipe_escape_max_velocity = 2131034116;
-			
-			// aapt resource value: 0x7f050005
-			public const int item_touch_helper_swipe_escape_velocity = 2131034117;
-			
-			// aapt resource value: 0x7f05000f
-			public const int notification_action_icon_size = 2131034127;
-			
-			// aapt resource value: 0x7f050010
-			public const int notification_action_text_size = 2131034128;
-			
-			// aapt resource value: 0x7f050011
-			public const int notification_big_circle_margin = 2131034129;
-			
-			// aapt resource value: 0x7f050007
-			public const int notification_content_margin_start = 2131034119;
-			
-			// aapt resource value: 0x7f050012
-			public const int notification_large_icon_height = 2131034130;
-			
-			// aapt resource value: 0x7f050013
-			public const int notification_large_icon_width = 2131034131;
-			
-			// aapt resource value: 0x7f050008
-			public const int notification_main_column_padding_top = 2131034120;
-			
-			// aapt resource value: 0x7f050009
-			public const int notification_media_narrow_margin = 2131034121;
-			
-			// aapt resource value: 0x7f050014
-			public const int notification_right_icon_size = 2131034132;
-			
-			// aapt resource value: 0x7f050006
-			public const int notification_right_side_padding_top = 2131034118;
-			
-			// aapt resource value: 0x7f050015
-			public const int notification_small_icon_background_padding = 2131034133;
-			
-			// aapt resource value: 0x7f050016
-			public const int notification_small_icon_size_as_large = 2131034134;
-			
-			// aapt resource value: 0x7f050017
-			public const int notification_subtext_size = 2131034135;
-			
-			// aapt resource value: 0x7f050018
-			public const int notification_top_pad = 2131034136;
-			
-			// aapt resource value: 0x7f050019
-			public const int notification_top_pad_large_text = 2131034137;
-			
-			static Dimension()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Dimension()
-			{
-			}
-		}
-		
-		public partial class Drawable
-		{
-			
-			// aapt resource value: 0x7f020000
-			public const int notification_action_background = 2130837504;
-			
-			// aapt resource value: 0x7f020001
-			public const int notification_bg = 2130837505;
-			
-			// aapt resource value: 0x7f020002
-			public const int notification_bg_low = 2130837506;
-			
-			// aapt resource value: 0x7f020003
-			public const int notification_bg_low_normal = 2130837507;
-			
-			// aapt resource value: 0x7f020004
-			public const int notification_bg_low_pressed = 2130837508;
-			
-			// aapt resource value: 0x7f020005
-			public const int notification_bg_normal = 2130837509;
-			
-			// aapt resource value: 0x7f020006
-			public const int notification_bg_normal_pressed = 2130837510;
-			
-			// aapt resource value: 0x7f020007
-			public const int notification_icon_background = 2130837511;
-			
-			// aapt resource value: 0x7f02000a
-			public const int notification_template_icon_bg = 2130837514;
-			
-			// aapt resource value: 0x7f02000b
-			public const int notification_template_icon_low_bg = 2130837515;
-			
-			// aapt resource value: 0x7f020008
-			public const int notification_tile_bg = 2130837512;
-			
-			// aapt resource value: 0x7f020009
-			public const int notify_panel_notification_icon_bg = 2130837513;
-			
-			static Drawable()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Drawable()
-			{
-			}
-		}
-		
-		public partial class Id
-		{
-			
-			// aapt resource value: 0x7f06000e
-			public const int action_container = 2131099662;
-			
-			// aapt resource value: 0x7f06001a
-			public const int action_divider = 2131099674;
-			
-			// aapt resource value: 0x7f06000f
-			public const int action_image = 2131099663;
-			
-			// aapt resource value: 0x7f060010
-			public const int action_text = 2131099664;
-			
-			// aapt resource value: 0x7f06001b
-			public const int actions = 2131099675;
-			
-			// aapt resource value: 0x7f060007
-			public const int async = 2131099655;
-			
-			// aapt resource value: 0x7f060008
-			public const int blocking = 2131099656;
-			
-			// aapt resource value: 0x7f060019
-			public const int chronometer = 2131099673;
-			
-			// aapt resource value: 0x7f060009
-			public const int forever = 2131099657;
-			
-			// aapt resource value: 0x7f06000c
-			public const int home_fragment_container = 2131099660;
-			
-			// aapt resource value: 0x7f060012
-			public const int icon = 2131099666;
-			
-			// aapt resource value: 0x7f06001c
-			public const int icon_group = 2131099676;
-			
-			// aapt resource value: 0x7f060015
-			public const int info = 2131099669;
-			
-			// aapt resource value: 0x7f06000a
-			public const int italic = 2131099658;
-			
-			// aapt resource value: 0x7f060000
-			public const int item_touch_helper_previous_elevation = 2131099648;
-			
-			// aapt resource value: 0x7f060001
-			public const int line1 = 2131099649;
-			
-			// aapt resource value: 0x7f060002
-			public const int line3 = 2131099650;
-			
-			// aapt resource value: 0x7f06000d
-			public const int myButton = 2131099661;
-			
-			// aapt resource value: 0x7f06000b
-			public const int normal = 2131099659;
-			
-			// aapt resource value: 0x7f060017
-			public const int notification_background = 2131099671;
-			
-			// aapt resource value: 0x7f060013
-			public const int notification_main_column = 2131099667;
-			
-			// aapt resource value: 0x7f060011
-			public const int notification_main_column_container = 2131099665;
-			
-			// aapt resource value: 0x7f060016
-			public const int right_icon = 2131099670;
-			
-			// aapt resource value: 0x7f060014
-			public const int right_side = 2131099668;
-			
-			// aapt resource value: 0x7f060003
-			public const int tag_transition_group = 2131099651;
-			
-			// aapt resource value: 0x7f060004
-			public const int text = 2131099652;
-			
-			// aapt resource value: 0x7f060005
-			public const int text2 = 2131099653;
-			
-			// aapt resource value: 0x7f060018
-			public const int time = 2131099672;
-			
-			// aapt resource value: 0x7f060006
-			public const int title = 2131099654;
->>>>>>> d6b4843aae7d0d3ce24e0ae9d54717932eeac4fb
 			
 			// aapt resource value: 0x7f050003
 			public const int abc_popup_enter = 2131034115;
 			
-<<<<<<< HEAD
 			// aapt resource value: 0x7f050004
 			public const int abc_popup_exit = 2131034116;
 			
@@ -398,64 +60,6 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f050009
 			public const int abc_slide_out_top = 2131034121;
-=======
-			private Id()
-			{
-			}
-		}
-		
-		public partial class Integer
-		{
-			
-			// aapt resource value: 0x7f0b0000
-			public const int status_bar_notification_info_maxnum = 2131427328;
-			
-			static Integer()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Integer()
-			{
-			}
-		}
-		
-		public partial class Layout
-		{
-			
-			// aapt resource value: 0x7f040000
-			public const int CalendarFragment = 2130968576;
-			
-			// aapt resource value: 0x7f040001
-			public const int HomeFragment = 2130968577;
-			
-			// aapt resource value: 0x7f040002
-			public const int Main = 2130968578;
-			
-			// aapt resource value: 0x7f040003
-			public const int notification_action = 2130968579;
-			
-			// aapt resource value: 0x7f040004
-			public const int notification_action_tombstone = 2130968580;
-			
-			// aapt resource value: 0x7f040005
-			public const int notification_template_custom_big = 2130968581;
-			
-			// aapt resource value: 0x7f040006
-			public const int notification_template_icon_group = 2130968582;
-			
-			// aapt resource value: 0x7f040007
-			public const int notification_template_part_chronometer = 2130968583;
-			
-			// aapt resource value: 0x7f040008
-			public const int notification_template_part_time = 2130968584;
-			
-			// aapt resource value: 0x7f040009
-			public const int SettingsFragment = 2130968585;
-			
-			// aapt resource value: 0x7f04000a
-			public const int WorkoutFragment = 2130968586;
->>>>>>> d6b4843aae7d0d3ce24e0ae9d54717932eeac4fb
 			
 			// aapt resource value: 0x7f05000a
 			public const int design_bottom_sheet_slide_in = 2131034122;
@@ -488,13 +92,8 @@ namespace FitnessTACKer
 		public partial class Animator
 		{
 			
-<<<<<<< HEAD
 			// aapt resource value: 0x7f060000
 			public const int design_appbar_state_list_animator = 2131099648;
-=======
-			// aapt resource value: 0x7f030000
-			public const int Icon = 2130903040;
->>>>>>> d6b4843aae7d0d3ce24e0ae9d54717932eeac4fb
 			
 			static Animator()
 			{
@@ -509,22 +108,11 @@ namespace FitnessTACKer
 		public partial class Attribute
 		{
 			
-<<<<<<< HEAD
 			// aapt resource value: 0x7f010052
 			public const int actionBarDivider = 2130772050;
 			
 			// aapt resource value: 0x7f010053
 			public const int actionBarItemBackground = 2130772051;
-=======
-			// aapt resource value: 0x7f070002
-			public const int app_name = 2131165186;
-			
-			// aapt resource value: 0x7f070001
-			public const int hello = 2131165185;
-			
-			// aapt resource value: 0x7f070000
-			public const int status_bar_notification_info_overflow = 2131165184;
->>>>>>> d6b4843aae7d0d3ce24e0ae9d54717932eeac4fb
 			
 			// aapt resource value: 0x7f01004c
 			public const int actionBarPopupTheme = 2130772044;
@@ -2766,8 +2354,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080037
 			public const int SYM = 2131230775;
 			
-			// aapt resource value: 0x7f08009e
-			public const int action0 = 2131230878;
+			// aapt resource value: 0x7f08009f
+			public const int action0 = 2131230879;
 			
 			// aapt resource value: 0x7f08007c
 			public const int action_bar = 2131230844;
@@ -2790,23 +2378,23 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08005a
 			public const int action_bar_title = 2131230810;
 			
-			// aapt resource value: 0x7f0800b1
-			public const int action_calender = 2131230897;
+			// aapt resource value: 0x7f0800b2
+			public const int action_calender = 2131230898;
 			
-			// aapt resource value: 0x7f08009b
-			public const int action_container = 2131230875;
+			// aapt resource value: 0x7f08009c
+			public const int action_container = 2131230876;
 			
 			// aapt resource value: 0x7f08007d
 			public const int action_context_bar = 2131230845;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int action_divider = 2131230882;
+			// aapt resource value: 0x7f0800a3
+			public const int action_divider = 2131230883;
 			
-			// aapt resource value: 0x7f0800b2
-			public const int action_home = 2131230898;
+			// aapt resource value: 0x7f0800b3
+			public const int action_home = 2131230899;
 			
-			// aapt resource value: 0x7f08009c
-			public const int action_image = 2131230876;
+			// aapt resource value: 0x7f08009d
+			public const int action_image = 2131230877;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -2823,17 +2411,17 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
+			// aapt resource value: 0x7f0800b5
+			public const int action_settings = 2131230901;
+			
+			// aapt resource value: 0x7f08009e
+			public const int action_text = 2131230878;
+			
 			// aapt resource value: 0x7f0800b4
-			public const int action_settings = 2131230900;
+			public const int action_workout = 2131230900;
 			
-			// aapt resource value: 0x7f08009d
-			public const int action_text = 2131230877;
-			
-			// aapt resource value: 0x7f0800b3
-			public const int action_workout = 2131230899;
-			
-			// aapt resource value: 0x7f0800ab
-			public const int actions = 2131230891;
+			// aapt resource value: 0x7f0800ac
+			public const int actions = 2131230892;
 			
 			// aapt resource value: 0x7f08005d
 			public const int activity_chooser_view_content = 2131230813;
@@ -2865,14 +2453,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08003d
 			public const int bottom = 2131230781;
 			
-			// aapt resource value: 0x7f08009a
-			public const int bottom_navigation = 2131230874;
+			// aapt resource value: 0x7f08009b
+			public const int bottom_navigation = 2131230875;
 			
 			// aapt resource value: 0x7f080063
 			public const int buttonPanel = 2131230819;
 			
-			// aapt resource value: 0x7f08009f
-			public const int cancel_action = 2131230879;
+			// aapt resource value: 0x7f0800a0
+			public const int cancel_action = 2131230880;
 			
 			// aapt resource value: 0x7f080045
 			public const int center = 2131230789;
@@ -2886,8 +2474,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080073
 			public const int checkbox = 2131230835;
 			
-			// aapt resource value: 0x7f0800a7
-			public const int chronometer = 2131230887;
+			// aapt resource value: 0x7f0800a8
+			public const int chronometer = 2131230888;
 			
 			// aapt resource value: 0x7f08004e
 			public const int clip_horizontal = 2131230798;
@@ -2943,8 +2531,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080030
 			public const int end = 2131230768;
 			
-			// aapt resource value: 0x7f0800ad
-			public const int end_padder = 2131230893;
+			// aapt resource value: 0x7f0800ae
+			public const int end_padder = 2131230894;
 			
 			// aapt resource value: 0x7f08003f
 			public const int enterAlways = 2131230783;
@@ -2985,11 +2573,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080021
 			public const int homeAsUp = 2131230753;
 			
+			// aapt resource value: 0x7f080099
+			public const int home_fragment_container = 2131230873;
+			
 			// aapt resource value: 0x7f080062
 			public const int icon = 2131230818;
 			
-			// aapt resource value: 0x7f0800ac
-			public const int icon_group = 2131230892;
+			// aapt resource value: 0x7f0800ad
+			public const int icon_group = 2131230893;
 			
 			// aapt resource value: 0x7f08003a
 			public const int ifRoom = 2131230778;
@@ -2997,8 +2588,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08005f
 			public const int image = 2131230815;
 			
-			// aapt resource value: 0x7f0800a8
-			public const int info = 2131230888;
+			// aapt resource value: 0x7f0800a9
+			public const int info = 2131230889;
 			
 			// aapt resource value: 0x7f080059
 			public const int italic = 2131230809;
@@ -3024,14 +2615,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800b0
-			public const int masked = 2131230896;
+			// aapt resource value: 0x7f0800b1
+			public const int masked = 2131230897;
 			
-			// aapt resource value: 0x7f0800a1
-			public const int media_actions = 2131230881;
+			// aapt resource value: 0x7f0800a2
+			public const int media_actions = 2131230882;
 			
-			// aapt resource value: 0x7f0800ae
-			public const int message = 2131230894;
+			// aapt resource value: 0x7f0800af
+			public const int message = 2131230895;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -3042,8 +2633,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f080099
-			public const int myButton = 2131230873;
+			// aapt resource value: 0x7f08009a
+			public const int myButton = 2131230874;
 			
 			// aapt resource value: 0x7f080093
 			public const int navigation_header_container = 2131230867;
@@ -3057,14 +2648,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08001e
 			public const int normal = 2131230750;
 			
-			// aapt resource value: 0x7f0800aa
-			public const int notification_background = 2131230890;
+			// aapt resource value: 0x7f0800ab
+			public const int notification_background = 2131230891;
+			
+			// aapt resource value: 0x7f0800a5
+			public const int notification_main_column = 2131230885;
 			
 			// aapt resource value: 0x7f0800a4
-			public const int notification_main_column = 2131230884;
-			
-			// aapt resource value: 0x7f0800a3
-			public const int notification_main_column_container = 2131230883;
+			public const int notification_main_column_container = 2131230884;
 			
 			// aapt resource value: 0x7f08004c
 			public const int parallax = 2131230796;
@@ -3090,11 +2681,11 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
 			
-			// aapt resource value: 0x7f0800a9
-			public const int right_icon = 2131230889;
+			// aapt resource value: 0x7f0800aa
+			public const int right_icon = 2131230890;
 			
-			// aapt resource value: 0x7f0800a5
-			public const int right_side = 2131230885;
+			// aapt resource value: 0x7f0800a6
+			public const int right_side = 2131230886;
 			
 			// aapt resource value: 0x7f08000c
 			public const int save_image_matrix = 2131230732;
@@ -3198,8 +2789,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f08004b
 			public const int start = 2131230795;
 			
-			// aapt resource value: 0x7f0800a0
-			public const int status_bar_latest_event_content = 2131230880;
+			// aapt resource value: 0x7f0800a1
+			public const int status_bar_latest_event_content = 2131230881;
 			
 			// aapt resource value: 0x7f080076
 			public const int submenuarrow = 2131230838;
@@ -3234,8 +2825,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080015
 			public const int textinput_error = 2131230741;
 			
-			// aapt resource value: 0x7f0800a6
-			public const int time = 2131230886;
+			// aapt resource value: 0x7f0800a7
+			public const int time = 2131230887;
 			
 			// aapt resource value: 0x7f08001c
 			public const int title = 2131230748;
@@ -3282,8 +2873,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800af
-			public const int visible = 2131230895;
+			// aapt resource value: 0x7f0800b0
+			public const int visible = 2131230896;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;
@@ -6931,151 +6522,6 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 1
 			public const int ViewStubCompat_android_layout = 1;
-			
-			static Styleable()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Styleable()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7f0a0000
-			public const int TextAppearance_Compat_Notification = 2131361792;
-			
-			// aapt resource value: 0x7f0a0001
-			public const int TextAppearance_Compat_Notification_Info = 2131361793;
-			
-			// aapt resource value: 0x7f0a0006
-			public const int TextAppearance_Compat_Notification_Line2 = 2131361798;
-			
-			// aapt resource value: 0x7f0a0002
-			public const int TextAppearance_Compat_Notification_Time = 2131361794;
-			
-			// aapt resource value: 0x7f0a0003
-			public const int TextAppearance_Compat_Notification_Title = 2131361795;
-			
-			// aapt resource value: 0x7f0a0004
-			public const int Widget_Compat_NotificationActionContainer = 2131361796;
-			
-			// aapt resource value: 0x7f0a0005
-			public const int Widget_Compat_NotificationActionText = 2131361797;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
-			{
-			}
-		}
-		
-		public partial class Styleable
-		{
-			
-			public static int[] FontFamily = new int[] {
-					2130771977,
-					2130771978,
-					2130771979,
-					2130771980,
-					2130771981,
-					2130771982};
-			
-			// aapt resource value: 0
-			public const int FontFamily_fontProviderAuthority = 0;
-			
-			// aapt resource value: 3
-			public const int FontFamily_fontProviderCerts = 3;
-			
-			// aapt resource value: 4
-			public const int FontFamily_fontProviderFetchStrategy = 4;
-			
-			// aapt resource value: 5
-			public const int FontFamily_fontProviderFetchTimeout = 5;
-			
-			// aapt resource value: 1
-			public const int FontFamily_fontProviderPackage = 1;
-			
-			// aapt resource value: 2
-			public const int FontFamily_fontProviderQuery = 2;
-			
-			public static int[] FontFamilyFont = new int[] {
-					16844082,
-					16844083,
-					16844095,
-					2130771983,
-					2130771984,
-					2130771985};
-			
-			// aapt resource value: 0
-			public const int FontFamilyFont_android_font = 0;
-			
-			// aapt resource value: 2
-			public const int FontFamilyFont_android_fontStyle = 2;
-			
-			// aapt resource value: 1
-			public const int FontFamilyFont_android_fontWeight = 1;
-			
-			// aapt resource value: 4
-			public const int FontFamilyFont_font = 4;
-			
-			// aapt resource value: 3
-			public const int FontFamilyFont_fontStyle = 3;
-			
-			// aapt resource value: 5
-			public const int FontFamilyFont_fontWeight = 5;
-			
-			public static int[] RecyclerView = new int[] {
-					16842948,
-					16842993,
-					2130771968,
-					2130771969,
-					2130771970,
-					2130771971,
-					2130771972,
-					2130771973,
-					2130771974,
-					2130771975,
-					2130771976};
-			
-			// aapt resource value: 1
-			public const int RecyclerView_android_descendantFocusability = 1;
-			
-			// aapt resource value: 0
-			public const int RecyclerView_android_orientation = 0;
-			
-			// aapt resource value: 6
-			public const int RecyclerView_fastScrollEnabled = 6;
-			
-			// aapt resource value: 9
-			public const int RecyclerView_fastScrollHorizontalThumbDrawable = 9;
-			
-			// aapt resource value: 10
-			public const int RecyclerView_fastScrollHorizontalTrackDrawable = 10;
-			
-			// aapt resource value: 7
-			public const int RecyclerView_fastScrollVerticalThumbDrawable = 7;
-			
-			// aapt resource value: 8
-			public const int RecyclerView_fastScrollVerticalTrackDrawable = 8;
-			
-			// aapt resource value: 2
-			public const int RecyclerView_layoutManager = 2;
-			
-			// aapt resource value: 4
-			public const int RecyclerView_reverseLayout = 4;
-			
-			// aapt resource value: 3
-			public const int RecyclerView_spanCount = 3;
-			
-			// aapt resource value: 5
-			public const int RecyclerView_stackFromEnd = 5;
 			
 			static Styleable()
 			{
