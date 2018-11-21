@@ -6,7 +6,7 @@
   <item
     android:id="@+id/action_calender"
     android:enabled="true"
-    android:icon="@drawable/Calender"
+    android:icon="@drawable/ic_action_calendar_today"
     android:title="Calender"
     app:showAsAction="ifRoom"
     />
@@ -14,7 +14,7 @@
   <item
     android:id="@+id/action_home"
     android:enabled="true"
-    android:icon="@drawable/Home"
+    android:icon="@drawable/ic_action_home"
     android:title="Home"
     app:showAsAction="ifRoom"
    />
@@ -22,7 +22,7 @@
   <item
     android:id="@+id/action_workout"
     android:enabled="true"
-    android:icon="@drawable/Workout"
+    android:icon="@drawable/ic_action_workout"
     android:title="Workout"
     app:showAsAction="ifRoom"
   />
@@ -30,7 +30,7 @@
   <item
     android:id="@+id/action_settings"
     android:enabled="true"
-    android:icon="@drawable/Settings"
+    android:icon="@drawable/ic_action_settings"
     android:title="Settings"
     app:showAsAction="ifRoom"
   />

@@ -1,16 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Util;
+﻿using Android.OS;
+using Android.Support.V4.App;
 using Android.Views;
-using Android.Widget;
 
 namespace FitnessTACKer
 {
@@ -23,12 +13,17 @@ namespace FitnessTACKer
             // Create your fragment here
         }
 
+        public static HomeFragment NewInstance()
+        {
+            var frag1 = new HomeFragment { Arguments = new Bundle() };
+            return frag1;
+        }
+
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-
-            return base.OnCreateView(inflater, container, savedInstanceState);
+            var ignored = base.OnCreateView(inflater, container, savedInstanceState);
+            return inflater.Inflate(Resource.Layout.HomeFragment, null);
         }
     }
 }

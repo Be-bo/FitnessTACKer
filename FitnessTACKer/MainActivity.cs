@@ -6,42 +6,53 @@ using Android.Support.Design.Widget;
 
 namespace FitnessTACKer
 {
-    [Activity(Label = "FitnessTACKer", MainLauncher = true, Icon = "@mipmap/icon",Theme ="@style/Theme.AppCompat")]
+    [Activity(Label = "FitnessTACKer", MainLauncher = true, Icon = "@mipmap/icon",Theme ="@style/Theme.AppCompat.DayNight")]
     public class MainActivity : AppCompatActivity
     {
-        int count = 1;
-
-        protected override void OnCreate(Bundle savedInstanceState)
+        BottomNavigationView bottomNavigation;
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
 
-            button.Click += delegate { button.Text = $"{count++} lifts!"; };
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
-            var bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
-            bottomNavigation.NavigationItemSelected += (s, e) => {
+            LoadFragment(Resource.Id.action_home);
 
-                switch (e.Item.ItemId) {
-                    case Resource.Id.action_calender:
-                        Toast.MakeText(this, "Calender Clicked", ToastLength.Short).Show();
-                        break;
-                    case Resource.Id.action_home:
-                        Toast.MakeText(this, "Home Clicked", ToastLength.Short).Show();
-                        break;
-                    case Resource.Id.action_workout:
-                        Toast.MakeText(this, "Workout Clicked", ToastLength.Short).Show();
-                        break;
-                    case Resource.Id.action_settings:
-                        Toast.MakeText(this, "Settings Clicked", ToastLength.Short).Show();
-                        break;
-                }
-            };
+        }
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            LoadFragment(e.Item.ItemId);
+        }
+
+        void LoadFragment(int id)
+        {
+            Android.Support.V4.App.Fragment fragment = null;
+            switch (id)
+            {
+                case Resource.Id.action_home:
+                    fragment = HomeFragment.NewInstance();
+                    break;
+                case Resource.Id.action_calender:
+                    fragment = CalendarFragment.NewInstance();
+                    break;
+                case Resource.Id.action_workout:
+                    fragment = WorkoutFragment.NewInstance();
+                    break;
+                case Resource.Id.action_settings:
+                    fragment = SettingsFragment.NewInstance();
+                    break;
+            }
+            if (fragment == null)
+                return;
+
+            SupportFragmentManager.BeginTransaction()
+               .Replace(Resource.Id.content_frame, fragment)
+               .Commit();
         }
     }
 }
