@@ -3325,11 +3325,17 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0a001f
 			public const int bottom_sheet_behavior = 2131361823;
 			
+			// aapt resource value: 0x7f0a0038
+			public const int calendar = 2131361848;
+			
 			// aapt resource value: 0x7f0a0020
 			public const int character_counter_pattern = 2131361824;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int hello = 2131361831;
+			
+			// aapt resource value: 0x7f0a0037
+			public const int home = 2131361847;
 			
 			// aapt resource value: 0x7f0a0032
 			public const int key_send_feedback = 2131361842;
@@ -3364,6 +3370,9 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;
 			
+			// aapt resource value: 0x7f0a0039
+			public const int settings = 2131361849;
+			
 			// aapt resource value: 0x7f0a0026
 			public const int status_bar_notification_info_overflow = 2131361830;
 			
@@ -3390,6 +3399,9 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f0a0036
 			public const int url_terms = 2131361846;
+			
+			// aapt resource value: 0x7f0a003a
+			public const int workout = 2131361850;
 			
 			static String()
 			{

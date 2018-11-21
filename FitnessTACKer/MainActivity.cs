@@ -18,8 +18,10 @@ namespace FitnessTACKer
             SetContentView(Resource.Layout.Main);
 
             bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
-
+            
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
+
+            bottomNavigation.SelectedItemId = Resource.Id.action_home;
 
             LoadFragment(Resource.Id.action_home);
 
@@ -32,19 +34,24 @@ namespace FitnessTACKer
         void LoadFragment(int id)
         {
             Android.Support.V4.App.Fragment fragment = null;
+            int title = 0;
             switch (id)
             {
                 case Resource.Id.action_home:
-                    fragment = HomeFragment.NewInstance();
+                    fragment = HomeFragment.NewInstance(); 
+                    title = Resource.String.home;
                     break;
                 case Resource.Id.action_calender:
                     fragment = CalendarFragment.NewInstance();
+                    title = Resource.String.calendar;
                     break;
                 case Resource.Id.action_workout:
                     fragment = WorkoutFragment.NewInstance();
+                    title = Resource.String.workout;
                     break;
                 case Resource.Id.action_settings:
                     fragment = SettingsFragment.NewInstance();
+                    title = Resource.String.settings;
                     break;
             }
             if (fragment == null)
@@ -53,7 +60,10 @@ namespace FitnessTACKer
             SupportFragmentManager.BeginTransaction()
                .Replace(Resource.Id.content_frame, fragment)
                .Commit();
+
+            if (title!=0) SupportActionBar.SetTitle(title);
         }
+
     }
 }
 

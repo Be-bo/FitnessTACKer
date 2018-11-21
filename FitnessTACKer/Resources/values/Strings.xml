@@ -16,4 +16,8 @@
   <string name="url_privacy">https://www.androidhive.info/privacy-policy/</string>
   <string name="title_terms">Terms &amp; Conditions</string>
   <string name="url_terms">https://www.androidhive.info/terms-of-service/</string>
+  <string name="home">Home</string>
+  <string name="calendar">Calendar</string>
+  <string name="settings">Settings</string>
+  <string name="workout">Workout</string>
 </resources>
