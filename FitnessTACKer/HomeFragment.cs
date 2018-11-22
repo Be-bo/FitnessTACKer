@@ -1,6 +1,10 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V7.Widget;
 using Android.Views;
+using FitnessTACKer.Adapter;
+using System;
+using System.Collections.Generic;
 
 namespace FitnessTACKer
 {
@@ -23,7 +27,39 @@ namespace FitnessTACKer
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            return inflater.Inflate(Resource.Layout.HomeFragment, null);
+
+            View view = inflater.Inflate(Resource.Layout.HomeFragment, null);
+            ConfigureRecyclerView(view.FindViewById<RecyclerView>(Resource.Id.recyclerview_home),
+               new WorkoutAdapter(RetrieveWorkouts()));
+
+            return view;
+        }
+
+        public List<WorkoutItem> RetrieveWorkouts()
+        {
+            return new List<WorkoutItem>() {
+                new WorkoutItem() { title = "leg workout" },
+                new WorkoutItem() { title = "some workout" },
+                new WorkoutItem() { title = "butt workout" },
+                new WorkoutItem() { title = "weekends" },
+                new WorkoutItem() { title = "boob workout" },
+                new WorkoutItem() { title = "MWF" }
+            };
+        }
+
+        void ConfigureRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter)
+        {
+            try
+            {
+                recyclerView.SetAdapter(adapter);
+                recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
+
+            }
+            catch (NullReferenceException e)
+            {
+
+            }
+
         }
     }
 }

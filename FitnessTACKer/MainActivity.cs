@@ -1,8 +1,11 @@
 ﻿using Android.App;
-using Android.Widget;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
+using Android.Support.V7.Widget;
+using System.Collections.Generic;
+using System;
+using FitnessTACKer.Adapter;
 
 namespace FitnessTACKer
 {
@@ -24,8 +27,8 @@ namespace FitnessTACKer
             bottomNavigation.SelectedItemId = Resource.Id.action_home;
 
             LoadFragment(Resource.Id.action_home);
-
         }
+
         private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
         {
             LoadFragment(e.Item.ItemId);
