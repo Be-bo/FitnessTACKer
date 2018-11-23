@@ -4,11 +4,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
+	<include layout="@layout/CustomToolbarHome"/>
+
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/recyclerview_home"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
 		android:scrollbars="vertical"
 		>
 	</android.support.v7.widget.RecyclerView>
+
+	<Button	android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:padding="8dp"
+		android:layout_marginBottom="8dp"
+		android:drawableLeft="@drawable/ic_add_white_36dp"
+		android:layout_gravity="center_horizontal"
+		android:text="@string/add_workout"
+		android:background="@color/accent"
+		android:textColor="#ffffff"
+	/>
 </LinearLayout>

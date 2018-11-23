@@ -39,11 +39,7 @@ namespace FitnessTACKer
         {
             return new List<WorkoutItem>() {
                 new WorkoutItem() { title = "leg workout" },
-                new WorkoutItem() { title = "some workout" },
-                new WorkoutItem() { title = "butt workout" },
-                new WorkoutItem() { title = "weekends" },
-                new WorkoutItem() { title = "boob workout" },
-                new WorkoutItem() { title = "MWF" }
+                new WorkoutItem() { title = "some workout" }
             };
         }
 
