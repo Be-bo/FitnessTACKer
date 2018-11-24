@@ -112,6 +112,12 @@
     <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
       <HintPath>packages\Xamarin.Android.Support.v7.RecyclerView.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.Preference">
+      <HintPath>packages\Xamarin.Android.Support.v7.Preference.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.v7.Preference.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v14.Preference">
+      <HintPath>packages\Xamarin.Android.Support.v14.Preference.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.v14.Preference.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WorkoutAdapter.cs" />
@@ -143,13 +149,14 @@
     <AndroidResource Include="Resources\layout\CalendarFragment.axml" />
     <AndroidResource Include="Resources\layout\HomeFragment.axml" />
     <AndroidResource Include="Resources\layout\WorkoutFragment.axml" />
-    <AndroidResource Include="Resources\mipmap-hdpi\SettingsFragment.axml" />
     <AndroidResource Include="Resources\layout\SettingsFragment.axml" />
     <AndroidResource Include="Resources\drawable\ic_action_home.png" />
     <AndroidResource Include="Resources\drawable\ic_action_calendar_today.png" />
     <AndroidResource Include="Resources\drawable\ic_action_settings.png" />
     <AndroidResource Include="Resources\drawable\ic_action_workout.png" />
     <AndroidResource Include="Resources\xml\settings_codec.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\xml\preference_divider.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml" />
@@ -313,4 +320,6 @@
   <Import Project="packages\Xamarin.Android.Support.Design.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Design.targets" Condition="Exists('packages\Xamarin.Android.Support.Design.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Design.targets')" />
   <Import Project="packages\Xamarin.Android.Support.v7.RecyclerView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.RecyclerView.targets" Condition="Exists('packages\Xamarin.Android.Support.v7.RecyclerView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.RecyclerView.targets')" />
   <Import Project="packages\Xamarin.Android.Support.v7.CardView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('packages\Xamarin.Android.Support.v7.CardView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.CardView.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.v7.Preference.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.Preference.targets" Condition="Exists('packages\Xamarin.Android.Support.v7.Preference.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.Preference.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.v14.Preference.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v14.Preference.targets" Condition="Exists('packages\Xamarin.Android.Support.v14.Preference.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v14.Preference.targets')" />
 </Project>

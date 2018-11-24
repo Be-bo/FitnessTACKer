@@ -10,7 +10,7 @@ using Android.Views;
 
 namespace FitnessTACKer
 {
-    [Activity(Label = "FitnessTACKer", MainLauncher = true, Icon = "@mipmap/icon",Theme = "@style/Theme.AppCompat.DayNight.NoActionBar")]
+    [Activity(Label = "FitnessTACKer", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : AppCompatActivity
     {
         BottomNavigationView bottomNavigation;
