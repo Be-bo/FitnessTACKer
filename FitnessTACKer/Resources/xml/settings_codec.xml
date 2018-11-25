@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
   <PreferenceCategory android:title="@string/pref_header_general">
+    <ListPreference
+    android:defaultValue="0"
+    android:entries="@array/increment"
+    android:entryValues="@array/increment_value"
+    android:summary="Increment currently set at %s"
+    android:title="@string/weight_increment"
+    android:key="@string/increment_key" />
+
     <SwitchPreference
          android:defaultValue="true"
          android:summary="@string/summary_notifications"

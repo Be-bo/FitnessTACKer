@@ -160,6 +160,8 @@
     <AndroidResource Include="Resources\xml\settings_codec.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\xml\preference_divider.xml" />
+    <AndroidResource Include="Resources\values\array.xml" />
+    <AndroidResource Include="Resources\xml\pref_screen.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml" />

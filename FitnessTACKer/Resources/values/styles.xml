@@ -6,9 +6,19 @@
     <item name="android:windowAllowReturnTransitionOverlap">true</item>
     <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
     <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-    <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    <item name="preferenceTheme">@style/AppPreferenceTheme</item>
     <item name="colorAccent">@color/accent</item>
     <item name="android:divider">@null</item>
     <item name="android:dividerHeight">0dp</item>
   </style>
+    
+  <!-- Custom Preference Theme -->
+  <style name="AppPreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+    <item name="preferenceFragmentCompatStyle"> @style/AppPreferenceFragmentCompatStyle </item>
+  </style>
+  <!-- Custom Style for PreferenceFragmentCompat -->
+  <style name="AppPreferenceFragmentCompatStyle" parent="@style/PreferenceFragment.Material">
+    <item name="android:layout">@xml/pref_screen</item>
+  </style>
+
 </resources>

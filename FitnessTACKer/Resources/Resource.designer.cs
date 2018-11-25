@@ -105,6 +105,25 @@ namespace FitnessTACKer
 			}
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f0f0000
+			public const int increment = 2131689472;
+			
+			// aapt resource value: 0x7f0f0001
+			public const int increment_value = 2131689473;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -2491,26 +2510,26 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02007a
-			public const int avd_hide_password_1 = 2130837626;
-			
-			// aapt resource value: 0x7f02007b
-			public const int avd_hide_password_2 = 2130837627;
-			
 			// aapt resource value: 0x7f02007c
-			public const int avd_hide_password_3 = 2130837628;
+			public const int avd_hide_password_1 = 2130837628;
+			
+			// aapt resource value: 0x7f02007d
+			public const int avd_hide_password_2 = 2130837629;
+			
+			// aapt resource value: 0x7f02007e
+			public const int avd_hide_password_3 = 2130837630;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02007d
-			public const int avd_show_password_1 = 2130837629;
-			
-			// aapt resource value: 0x7f02007e
-			public const int avd_show_password_2 = 2130837630;
-			
 			// aapt resource value: 0x7f02007f
-			public const int avd_show_password_3 = 2130837631;
+			public const int avd_show_password_1 = 2130837631;
+			
+			// aapt resource value: 0x7f020080
+			public const int avd_show_password_2 = 2130837632;
+			
+			// aapt resource value: 0x7f020081
+			public const int avd_show_password_3 = 2130837633;
 			
 			// aapt resource value: 0x7f020055
 			public const int Calender = 2130837589;
@@ -2552,76 +2571,82 @@ namespace FitnessTACKer
 			public const int ic_add_white_36dp = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_keyboard_arrow_left_black_36dp = 2130837602;
+			public const int ic_close_black_18dp = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_keyboard_arrow_left_black_48dp = 2130837603;
+			public const int ic_close_black_36dp = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_keyboard_arrow_right_black_36dp = 2130837604;
+			public const int ic_keyboard_arrow_left_black_36dp = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_keyboard_arrow_right_black_48dp = 2130837605;
+			public const int ic_keyboard_arrow_left_black_48dp = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_more_horiz_black_36dp = 2130837606;
+			public const int ic_keyboard_arrow_right_black_36dp = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int nav_item_color_state = 2130837607;
+			public const int ic_keyboard_arrow_right_black_48dp = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int navigation_empty_icon = 2130837608;
+			public const int ic_more_horiz_black_36dp = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_action_background = 2130837609;
+			public const int nav_item_color_state = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notification_bg = 2130837610;
+			public const int navigation_empty_icon = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int notification_bg_low = 2130837611;
+			public const int notification_action_background = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int notification_bg_low_normal = 2130837612;
+			public const int notification_bg = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int notification_bg_low_pressed = 2130837613;
+			public const int notification_bg_low = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int notification_bg_normal = 2130837614;
+			public const int notification_bg_low_normal = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int notification_bg_normal_pressed = 2130837615;
+			public const int notification_bg_low_pressed = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int notification_icon_background = 2130837616;
-			
-			// aapt resource value: 0x7f020078
-			public const int notification_template_icon_bg = 2130837624;
-			
-			// aapt resource value: 0x7f020079
-			public const int notification_template_icon_low_bg = 2130837625;
+			public const int notification_bg_normal = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int notification_tile_bg = 2130837617;
+			public const int notification_bg_normal_pressed = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int notify_panel_notification_icon_bg = 2130837618;
+			public const int notification_icon_background = 2130837618;
+			
+			// aapt resource value: 0x7f02007a
+			public const int notification_template_icon_bg = 2130837626;
+			
+			// aapt resource value: 0x7f02007b
+			public const int notification_template_icon_low_bg = 2130837627;
 			
 			// aapt resource value: 0x7f020073
-			public const int preference_list_divider_material = 2130837619;
+			public const int notification_tile_bg = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int Settings = 2130837620;
+			public const int notify_panel_notification_icon_bg = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int tooltip_frame_dark = 2130837621;
+			public const int preference_list_divider_material = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int tooltip_frame_light = 2130837622;
+			public const int Settings = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int Workout = 2130837623;
+			public const int tooltip_frame_dark = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int tooltip_frame_light = 2130837624;
+			
+			// aapt resource value: 0x7f020079
+			public const int Workout = 2130837625;
 			
 			static Drawable()
 			{
@@ -2678,8 +2703,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f09005a
 			public const int action_bar_title = 2131296346;
 			
-			// aapt resource value: 0x7f0900bf
-			public const int action_calender = 2131296447;
+			// aapt resource value: 0x7f0900c0
+			public const int action_calender = 2131296448;
 			
 			// aapt resource value: 0x7f0900a2
 			public const int action_container = 2131296418;
@@ -2690,8 +2715,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0900a9
 			public const int action_divider = 2131296425;
 			
-			// aapt resource value: 0x7f0900c0
-			public const int action_home = 2131296448;
+			// aapt resource value: 0x7f0900c1
+			public const int action_home = 2131296449;
 			
 			// aapt resource value: 0x7f0900a3
 			public const int action_image = 2131296419;
@@ -2711,14 +2736,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f09005c
 			public const int action_mode_close_button = 2131296348;
 			
-			// aapt resource value: 0x7f0900c2
-			public const int action_settings = 2131296450;
+			// aapt resource value: 0x7f0900c3
+			public const int action_settings = 2131296451;
 			
 			// aapt resource value: 0x7f0900a4
 			public const int action_text = 2131296420;
 			
-			// aapt resource value: 0x7f0900c1
-			public const int action_workout = 2131296449;
+			// aapt resource value: 0x7f0900c2
+			public const int action_workout = 2131296450;
 			
 			// aapt resource value: 0x7f0900b2
 			public const int actions = 2131296434;
@@ -2927,8 +2952,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900be
-			public const int masked = 2131296446;
+			// aapt resource value: 0x7f0900bf
+			public const int masked = 2131296447;
 			
 			// aapt resource value: 0x7f0900a8
 			public const int media_actions = 2131296424;
@@ -3170,6 +3195,9 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f09006f
 			public const int title_template = 2131296367;
 			
+			// aapt resource value: 0x7f0900bd
+			public const int toolbar = 2131296445;
+			
 			// aapt resource value: 0x7f09003e
 			public const int top = 2131296318;
 			
@@ -3209,8 +3237,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900bd
-			public const int visible = 2131296445;
+			// aapt resource value: 0x7f0900be
+			public const int visible = 2131296446;
 			
 			// aapt resource value: 0x7f09003c
 			public const int withText = 2131296316;
@@ -3542,8 +3570,8 @@ namespace FitnessTACKer
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f0f0000
-			public const int bottom_navigation_main = 2131689472;
+			// aapt resource value: 0x7f100000
+			public const int bottom_navigation_main = 2131755008;
 			
 			static Menu()
 			{
@@ -3661,8 +3689,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0b0012
 			public const int abc_toolbar_collapse_description = 2131427346;
 			
-			// aapt resource value: 0x7f0b003b
-			public const int add_workout = 2131427387;
+			// aapt resource value: 0x7f0b003e
+			public const int add_workout = 2131427390;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int app_name = 2131427370;
@@ -3676,11 +3704,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0b0021
 			public const int bottom_sheet_behavior = 2131427361;
 			
-			// aapt resource value: 0x7f0b0038
-			public const int calendar = 2131427384;
+			// aapt resource value: 0x7f0b003b
+			public const int calendar = 2131427387;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int character_counter_pattern = 2131427362;
+			
+			// aapt resource value: 0x7f0b0038
+			public const int default_increment = 2131427384;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int feedback = 2131427380;
@@ -3688,11 +3719,14 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0b0029
 			public const int hello = 2131427369;
 			
-			// aapt resource value: 0x7f0b0037
-			public const int home = 2131427383;
+			// aapt resource value: 0x7f0b003a
+			public const int home = 2131427386;
 			
 			// aapt resource value: 0x7f0b002c
 			public const int increment = 2131427372;
+			
+			// aapt resource value: 0x7f0b0037
+			public const int increment_key = 2131427383;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int notifications = 2131427373;
@@ -3727,8 +3761,8 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0b0013
 			public const int search_menu_title = 2131427347;
 			
-			// aapt resource value: 0x7f0b0039
-			public const int settings = 2131427385;
+			// aapt resource value: 0x7f0b003c
+			public const int settings = 2131427388;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int status_bar_notification_info_overflow = 2131427368;
@@ -3751,8 +3785,11 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0b0031
 			public const int version = 2131427377;
 			
-			// aapt resource value: 0x7f0b003a
-			public const int workout = 2131427386;
+			// aapt resource value: 0x7f0b0039
+			public const int weight_increment = 2131427385;
+			
+			// aapt resource value: 0x7f0b003d
+			public const int workout = 2131427389;
 			
 			static String()
 			{
@@ -3784,6 +3821,12 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f0a0182
 			public const int Animation_Design_BottomSheetDialog = 2131362178;
+			
+			// aapt resource value: 0x7f0a01a5
+			public const int AppPreferenceFragmentCompatStyle = 2131362213;
+			
+			// aapt resource value: 0x7f0a01a4
+			public const int AppPreferenceTheme = 2131362212;
 			
 			// aapt resource value: 0x7f0a00ab
 			public const int Base_AlertDialog_AppCompat = 2131361963;
@@ -5041,10 +5084,13 @@ namespace FitnessTACKer
 		{
 			
 			// aapt resource value: 0x7f070000
-			public const int preference_divider = 2131165184;
+			public const int pref_screen = 2131165184;
 			
 			// aapt resource value: 0x7f070001
-			public const int settings_codec = 2131165185;
+			public const int preference_divider = 2131165185;
+			
+			// aapt resource value: 0x7f070002
+			public const int settings_codec = 2131165186;
 			
 			static Xml()
 			{
