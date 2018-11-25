@@ -22,7 +22,7 @@
 		android:drawableLeft="@drawable/ic_add_white_36dp"
 		android:layout_gravity="center_horizontal"
 		android:text="@string/add_workout"
-		android:background="@color/accent"
+		android:background="@color/primary"
 		android:textColor="#ffffff"
 	/>
 </LinearLayout>

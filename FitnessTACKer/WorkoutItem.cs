@@ -3,6 +3,7 @@
     public class WorkoutItem
     {
         public string title { get; set; }
-        // TODO add exercise items
+        public bool expanded { get; set; }
+        public string exercises { get; set; }
     }
 }

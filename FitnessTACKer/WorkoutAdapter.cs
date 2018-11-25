@@ -2,6 +2,7 @@
 using Android.Util;
 using Android.Views;
 using FitnessTACKer;
+using System;
 using System.Collections.Generic;
 
 namespace FitnessTACKer.Adapter
@@ -10,6 +11,7 @@ namespace FitnessTACKer.Adapter
     {
 
         private List<WorkoutItem> data;
+        public event EventHandler<int> ItemClick;
 
         public WorkoutAdapter(List<WorkoutItem> workouts)
         {
@@ -25,6 +27,17 @@ namespace FitnessTACKer.Adapter
         {
             WorkoutViewHolder workoutHolder = holder as WorkoutViewHolder;
             workoutHolder.Title.Text = data[position].title;
+            workoutHolder.Exercises.Text = data[position].exercises;
+
+            if (data[position].expanded)
+            {
+                // expand
+                workoutHolder.Temp.Visibility = ViewStates.Visible;
+            } else
+            {
+                // collapse
+                workoutHolder.Temp.Visibility = ViewStates.Gone;
+            }
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -32,7 +45,15 @@ namespace FitnessTACKer.Adapter
             View itemView = LayoutInflater.From(parent.Context).
                         Inflate(Resource.Layout.ListItemWorkout, parent, false);
 
-            return new WorkoutViewHolder(itemView);
+            return new WorkoutViewHolder(itemView, OnClick);
+        }
+
+        private void OnClick(int position)
+        {
+            if (ItemClick != null)
+            {
+                ItemClick(this, position);
+            }
         }
     }
 }

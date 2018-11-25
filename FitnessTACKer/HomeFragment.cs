@@ -10,6 +10,9 @@ namespace FitnessTACKer
 {
     public class HomeFragment : Fragment
     {
+        private List<WorkoutItem> RecyclerViewData;
+        private WorkoutAdapter AdapterHome;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,33 +32,38 @@ namespace FitnessTACKer
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
 
             View view = inflater.Inflate(Resource.Layout.HomeFragment, null);
-            ConfigureRecyclerView(view.FindViewById<RecyclerView>(Resource.Id.recyclerview_home),
-               new WorkoutAdapter(RetrieveWorkouts()));
+
+            RecyclerViewData = new List<WorkoutItem>();
+
+            RecyclerView recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerview_home);
+            AdapterHome = new WorkoutAdapter(RecyclerViewData);
+            recyclerView.SetAdapter(AdapterHome);
+            recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
+            AdapterHome.ItemClick += OnItemClick;
+
+            RetrieveWorkouts();
 
             return view;
         }
 
-        public List<WorkoutItem> RetrieveWorkouts()
+        public void RetrieveWorkouts()
         {
-            return new List<WorkoutItem>() {
-                new WorkoutItem() { title = "leg workout" },
-                new WorkoutItem() { title = "some workout" }
-            };
+            RecyclerViewData.Add(new WorkoutItem() { title = "Friday workout", exercises= "Weighted Pull Ups\nBarbell Full Squat\nSingle-Arm Linear Jammer\nLandmine 180's", expanded=false });
+            AdapterHome.NotifyDataSetChanged();
+            RecyclerViewData.Add(new WorkoutItem() { title = "wednesday prancercise", exercises = "Bench Press\nDeadlift with Chains\nBox Squat\nKneeling Squat", expanded = false });
+            AdapterHome.NotifyDataSetChanged();
         }
 
-        void ConfigureRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter)
+        private void OnItemClick(object sender, int position)
         {
-            try
+            if (RecyclerViewData[position].expanded)
             {
-                recyclerView.SetAdapter(adapter);
-                recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
-
-            }
-            catch (NullReferenceException e)
+                RecyclerViewData[position].expanded = false;
+            } else
             {
-
+                RecyclerViewData[position].expanded = true;
             }
-
+            AdapterHome.NotifyItemChanged(position);
         }
     }
 }

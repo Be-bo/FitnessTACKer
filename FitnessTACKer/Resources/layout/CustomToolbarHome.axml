@@ -16,7 +16,7 @@
 			android:layout_height="48dp"
 			style="?android:attr/borderlessButtonStyle"
 			android:src="@drawable/ic_keyboard_arrow_left_black_48dp"
-			android:tint="@color/accent"
+			android:tint="#ffffff"
 			
 			/>
 
@@ -35,7 +35,7 @@
 			android:layout_height="48dp"
 			style="?android:attr/borderlessButtonStyle"
 			android:src="@drawable/ic_keyboard_arrow_right_black_48dp"
-			android:tint="@color/accent"
+			android:tint="#ffffff"
 			/>
 	</LinearLayout>
 

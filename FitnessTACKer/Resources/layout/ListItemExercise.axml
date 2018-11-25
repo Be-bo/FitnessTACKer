@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    card_view:cardElevation="1dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	card_view:cardUseCompatPadding="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:animateLayoutChanges="true">
+
+		<TextView
+		android:id="@+id/exercise_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Sample delete his l8r"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_margin="8dp"
+		/>
+
+		<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center">
+			<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="number"
+				/>
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_close_black_18dp"
+			/>
+
+			<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="number"
+				/>
+
+			<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="number"
+				/>
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_close_black_18dp"
+			/>
+
+			<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="number"
+				/>
+		</LinearLayout>
+
+	</LinearLayout>
+	
+
+</CardView>
