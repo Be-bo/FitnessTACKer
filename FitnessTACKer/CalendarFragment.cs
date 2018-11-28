@@ -1,31 +1,29 @@
-﻿using Android.OS;
+﻿using System;
+using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Widget;
 
 namespace FitnessTACKer
 {
     public class CalendarFragment : Fragment
     {
-        public override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-
-            // Create your fragment here
-            
-
-        }
+        
 
         public static CalendarFragment NewInstance()
         {
             var frag2 = new CalendarFragment { Arguments = new Bundle() };
             return frag2;
         }
-
+        
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            return inflater.Inflate(Resource.Layout.CalendarFragment, null);
+            var ignored = base.OnCreateView(inflater, container, savedInstanceState); 
+            View view = inflater.Inflate(Resource.Layout.CalendarFragment, null);
+            CalendarView calendar = view.FindViewById<CalendarView>(Resource.Id.calendarView1);
+
+            return view;
         }
     }
 }

@@ -3063,6 +3063,9 @@ namespace FitnessTACKer
 			// aapt resource value: 0x7f0900b5
 			public const int button_done = 2131296437;
 			
+			// aapt resource value: 0x7f09008b
+			public const int calendarView1 = 2131296395;
+			
 			// aapt resource value: 0x7f0900c1
 			public const int cancel_action = 2131296449;
 			
@@ -3479,9 +3482,6 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090069
 			public const int textSpacerNoTitle = 2131296361;
-			
-			// aapt resource value: 0x7f09008b
-			public const int textView2 = 2131296395;
 			
 			// aapt resource value: 0x7f0900d7
 			public const int textView3 = 2131296471;
