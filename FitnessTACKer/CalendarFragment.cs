@@ -11,6 +11,8 @@ namespace FitnessTACKer
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
+            
+
         }
 
         public static CalendarFragment NewInstance()
