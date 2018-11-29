@@ -65,10 +65,11 @@
 		android:text="Add set"
 		android:layout_gravity="center"
 		android:layout_marginBottom="8dp"
-		android:background="@color/primary"
+		android:background="@drawable/action_button_selector"
 		android:textColor="#ffffff"
 		android:drawableLeft="@drawable/ic_add_white_18dp"
-		android:paddingRight="8dp"
+		android:paddingRight="12dp"
+		android:paddingLeft="8dp"
 		android:visibility="gone"
 	/>
 	

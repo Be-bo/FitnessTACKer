@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 using Android.Support.V4.Widget;
 using Android.Widget;
+using System.Text.RegularExpressions;
+using Android.Views.InputMethods;
 
 namespace FitnessTACKer
 {
@@ -16,6 +18,7 @@ namespace FitnessTACKer
     {
         private List<WorkoutItem> RecyclerViewData;
         private WorkoutAdapter AdapterHome;
+        private View root;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,12 +38,14 @@ namespace FitnessTACKer
         {
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
 
-            View view = inflater.Inflate(Resource.Layout.HomeFragment, null);
+            root = inflater.Inflate(Resource.Layout.HomeFragment, null);
+
+            root.FindViewById<TextView>(Resource.Id.todays_date).Text = DateTime.UtcNow.Date.ToString("dddd, d");
 
             RecyclerViewData = new List<WorkoutItem>();
 
-            RecyclerView recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerview_home);
-            AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData);
+            RecyclerView recyclerView = root.FindViewById<RecyclerView>(Resource.Id.recyclerview_home);
+            AdapterHome = new WorkoutAdapter(root.Context, RecyclerViewData);
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
             recyclerView.NestedScrollingEnabled = false;
@@ -48,7 +53,7 @@ namespace FitnessTACKer
 
             RetrieveWorkouts();
 
-            return view;
+            return root;
         }
 
         public void RetrieveWorkouts()
@@ -75,6 +80,9 @@ namespace FitnessTACKer
             } else
             {
                 RecyclerViewData[position].expanded = !RecyclerViewData[position].expanded;
+
+                var imm = (InputMethodManager)Activity.GetSystemService(Context.InputMethodService);
+                imm.HideSoftInputFromWindow(root.WindowToken, HideSoftInputFlags.NotAlways);
             }
             
             AdapterHome.NotifyItemChanged(position);

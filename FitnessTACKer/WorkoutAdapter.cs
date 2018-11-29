@@ -1,7 +1,9 @@
-﻿using Android.Content;
+﻿using Android.App;
+using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 using FitnessTACKer;
 using System;
@@ -109,6 +111,12 @@ namespace FitnessTACKer.Adapter
                     v.FindViewById<LinearLayout>(Resource.Id.layout_set).Visibility = ViewStates.Gone;
                     v.FindViewById<LinearLayout>(Resource.Id.layout_set_title).Visibility = ViewStates.Gone;
                     v.FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Gone;
+                    var im = ((InputMethodManager)context.GetSystemService(Android.Content.Context.InputMethodService));
+
+                    if (!v.FindViewById<EditText>(Resource.Id.target1).HasFocus)
+                    {
+                        im.HideSoftInputFromWindow(v.FindViewById<EditText>(Resource.Id.target1).WindowToken, 0);
+                    };
                 }
             }
             else if (v.Id == Resource.Id.add_set_btn)
