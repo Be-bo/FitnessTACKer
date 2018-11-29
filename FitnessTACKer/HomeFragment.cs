@@ -4,7 +4,9 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using FitnessTACKer.Adapter;
 using System;
+using Android.Content;
 using System.Collections.Generic;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FitnessTACKer
 {
@@ -36,7 +38,7 @@ namespace FitnessTACKer
             RecyclerViewData = new List<WorkoutItem>();
 
             RecyclerView recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerview_home);
-            AdapterHome = new WorkoutAdapter(RecyclerViewData);
+            AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData);
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
             AdapterHome.ItemClick += OnItemClick;

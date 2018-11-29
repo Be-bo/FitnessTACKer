@@ -9,14 +9,17 @@ namespace FitnessTACKer
     {
         public TextView Title { get; set; }
         public TextView Exercises { get; set; }
-        public TextView Temp { get; set; }
+        public LinearLayout ExpandedLayout { get; set; }
+        public LinearLayout ExerciseItem { get; set; }
 
         public WorkoutViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
             Title = itemView.FindViewById<TextView>(Resource.Id.workout_title);
-            Temp = itemView.FindViewById<TextView>(Resource.Id.temp_temp);
             Exercises = itemView.FindViewById<TextView>(Resource.Id.tv_exercises);
-            itemView.Click += (sender, e) => listener(base.Position);
+            ExpandedLayout = itemView.FindViewById<LinearLayout>(Resource.Id.expanded_layout);
+            ExerciseItem = itemView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item);
+
+            itemView.Click += (sender, e) => listener(base.AdapterPosition);
         }
     }
 }

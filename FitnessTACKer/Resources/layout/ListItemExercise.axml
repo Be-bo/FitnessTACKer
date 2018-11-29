@@ -7,8 +7,9 @@
     android:focusable="true"
 	android:orientation="vertical"
 	android:animateLayoutChanges="true"
-    android:background="@drawable/listitemexercisebackground">
-
+    android:background="@drawable/listitemexercisebackground"
+	android:id="@+id/root_exercise_item"
+	>
 
 		<TextView
 		android:id="@+id/exercise_name"
@@ -20,11 +21,13 @@
 		/>
 
 	<LinearLayout
+		android:id="@+id/layout_set_title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginBotttom="12dp"
+		android:layout_marginBottom="12dp"
 		android:orientation="horizontal"
 		android:gravity="center"
+		android:visibility="gone"
 		>
 		<TextView
 		android:layout_width="wrap_content"
@@ -40,59 +43,25 @@
 
 		</LinearLayout>
 
-		<LinearLayout
-		android:orientation="horizontal"
+	<LinearLayout
+		android:id="@+id/layout_set"
+		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
-		android:layout_marginBottom="12dp">
-			<EditText
-				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:inputType="number"
-				android:background="@drawable/input_box_background"
-				/>
+		android:layout_marginBottom="12dp"
+		android:animateLayoutChanges="true"
+		android:visibility="gone">
 
-			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:src="@drawable/ic_close_black_18dp"
-			/>
+		<include layout="@layout/ExerciseSetItem"/>
 
-			<EditText
-				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:inputType="number"
-				android:background="@drawable/input_box_background"
-				android:layout_marginRight="8dp"
-				/>
-
-			<EditText
-				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:inputType="number"
-			    android:layout_marginLeft="8dp"
-				android:background="@drawable/input_box_background"
-				/>
-
-			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:src="@drawable/ic_close_black_18dp"
-			/>
-
-			<EditText
-				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:inputType="number"
-				android:background="@drawable/input_box_background"
-				/>
 		</LinearLayout>
 
+
 	<Button
+		android:id="@+id/add_set_btn"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:drawableLeft=""
 		android:text="Add set"
 		android:layout_gravity="center"
 		android:layout_marginBottom="8dp"
@@ -100,6 +69,7 @@
 		android:textColor="#ffffff"
 		android:drawableLeft="@drawable/ic_add_white_18dp"
 		android:paddingRight="8dp"
+		android:visibility="gone"
 	/>
 	
 

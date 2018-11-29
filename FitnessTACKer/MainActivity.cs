@@ -21,6 +21,8 @@ namespace FitnessTACKer
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+            Window.SetSoftInputMode(SoftInput.AdjustNothing);
+
             bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
             
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
