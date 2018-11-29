@@ -11,6 +11,7 @@ namespace FitnessTACKer
         public TextView Exercises { get; set; }
         public LinearLayout ExpandedLayout { get; set; }
         public LinearLayout ExerciseItem { get; set; }
+        public Button AddExerciseBtn { get; set; }
 
         public WorkoutViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
@@ -18,8 +19,11 @@ namespace FitnessTACKer
             Exercises = itemView.FindViewById<TextView>(Resource.Id.tv_exercises);
             ExpandedLayout = itemView.FindViewById<LinearLayout>(Resource.Id.expanded_layout);
             ExerciseItem = itemView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item);
+            AddExerciseBtn = itemView.FindViewById<Button>(Resource.Id.add_exercise_btn);
 
             itemView.Click += (sender, e) => listener(base.AdapterPosition);
+            Title.Click += (sender, e) => listener(base.AdapterPosition);
+            AddExerciseBtn.Click += (sender, e) => listener(base.AdapterPosition);
         }
     }
 }

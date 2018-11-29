@@ -7,6 +7,8 @@ using System;
 using Android.Content;
 using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
+using Android.Support.V4.Widget;
+using Android.Widget;
 
 namespace FitnessTACKer
 {
@@ -41,6 +43,7 @@ namespace FitnessTACKer
             AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData);
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
+            recyclerView.NestedScrollingEnabled = false;
             AdapterHome.ItemClick += OnItemClick;
 
             RetrieveWorkouts();
@@ -50,21 +53,30 @@ namespace FitnessTACKer
 
         public void RetrieveWorkouts()
         {
-            RecyclerViewData.Add(new WorkoutItem() { title = "Friday workout", exercises= "Weighted Pull Ups\nBarbell Full Squat\nSingle-Arm Linear Jammer\nLandmine 180's", expanded=false });
+            RecyclerViewData.Add(new WorkoutItem() { title = "Friday workout", exercises= "Weighted Pull Ups\nBarbell Full Squat\nSingle-Arm Linear Jammer\nLandmine 180's", expanded=false});
             AdapterHome.NotifyDataSetChanged();
-            RecyclerViewData.Add(new WorkoutItem() { title = "wednesday prancercise", exercises = "Bench Press\nDeadlift with Chains\nBox Squat\nKneeling Squat", expanded = false });
+            RecyclerViewData.Add(new WorkoutItem() { title = "wednesday prancercise", exercises = "Bench Press\nDeadlift with Chains\nBox Squat\nKneeling Squat", expanded = false});
             AdapterHome.NotifyDataSetChanged();
         }
 
         private void OnItemClick(object sender, int position)
         {
-            if (RecyclerViewData[position].expanded)
+            int senderId = -1;
+            try
             {
-                RecyclerViewData[position].expanded = false;
+                senderId = ((Button)sender).Id;
+            } catch (Exception e)
+            {
+
+            }
+            if (senderId!=-1 && senderId == Resource.Id.add_exercise_btn)
+            {
+                RecyclerViewData[position].exercises += "\nExercise name";
             } else
             {
-                RecyclerViewData[position].expanded = true;
+                RecyclerViewData[position].expanded = !RecyclerViewData[position].expanded;
             }
+            
             AdapterHome.NotifyItemChanged(position);
         }
     }

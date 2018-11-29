@@ -36,11 +36,13 @@ namespace FitnessTACKer.Adapter
             if (data[position].expanded)
             {
                 // expand
+                workoutHolder.ExpandedLayout.RemoveAllViews();
                 workoutHolder.ExpandedLayout.Visibility = ViewStates.Visible;
                 workoutHolder.Exercises.Visibility = ViewStates.Gone;
-                
+                workoutHolder.AddExerciseBtn.Visibility = ViewStates.Visible;
+
                 String[] exercisesList = data[position].exercises.Split('\n');
-                for (int i=0; i< exercisesList.Length && !data[position].initialized; i++)
+                for (int i=0; i< exercisesList.Length; i++)
                 {
                     View exerciseView = LayoutInflater.From(context).Inflate(Resource.Layout.ListItemExercise, null);
                     exerciseView.FindViewById<TextView>(Resource.Id.exercise_name).Text = exercisesList[i];
@@ -62,10 +64,24 @@ namespace FitnessTACKer.Adapter
                         exerciseView.FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Gone;
                     }
 
-                    if (i == exercisesList.Length - 1) data[position].initialized = true;
+                    LinearLayout rootExerciseItem = exerciseView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item);
+                    Button addSetBtn = exerciseView.FindViewById<Button>(Resource.Id.add_set_btn);
 
-                    exerciseView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item).SetOnClickListener(this);
-                    exerciseView.FindViewById<Button>(Resource.Id.add_set_btn).SetOnClickListener(this);
+                    if (!rootExerciseItem.HasOnClickListeners)
+                        rootExerciseItem.SetOnClickListener(this);
+
+                    if (!addSetBtn.HasOnClickListeners)
+                        addSetBtn.SetOnClickListener(this);
+                }
+
+                if (workoutHolder.Exercises.Text.Split('\n').Length < exercisesList.Length)
+                {
+                    View exerciseView = LayoutInflater.From(context).Inflate(Resource.Layout.ListItemExercise, null);
+                    exerciseView.FindViewById<TextView>(Resource.Id.exercise_name).Text = exercisesList[exercisesList.Length-1];
+                    LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
+                    ll.TopMargin = 8; ll.BottomMargin = 8;
+                    exerciseView.LayoutParameters = ll;
+                    workoutHolder.ExpandedLayout.AddView(exerciseView);
                 }
 
             } else
@@ -73,6 +89,7 @@ namespace FitnessTACKer.Adapter
                 // collapse
                 workoutHolder.ExpandedLayout.Visibility = ViewStates.Gone;
                 workoutHolder.Exercises.Visibility = ViewStates.Visible;
+                workoutHolder.AddExerciseBtn.Visibility = ViewStates.Gone;
             }
         }
 
