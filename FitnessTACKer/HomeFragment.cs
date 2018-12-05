@@ -66,26 +66,15 @@ namespace FitnessTACKer
 
         private void OnItemClick(object sender, int position)
         {
-            int senderId = -1;
-            try
-            {
-                senderId = ((Button)sender).Id;
-            } catch (Exception e)
-            {
-
-            }
-            if (senderId!=-1 && senderId == Resource.Id.add_exercise_btn)
-            {
-                RecyclerViewData[position].exercises += "\nExercise name";
-            } else
-            {
-                RecyclerViewData[position].expanded = !RecyclerViewData[position].expanded;
-
-                var imm = (InputMethodManager)Activity.GetSystemService(Context.InputMethodService);
-                imm.HideSoftInputFromWindow(root.WindowToken, HideSoftInputFlags.NotAlways);
-            }
-            
+            RecyclerViewData[position].expanded = !RecyclerViewData[position].expanded;
+            HideKeyboard();
             AdapterHome.NotifyItemChanged(position);
+        }
+
+        public void HideKeyboard()
+        {
+            var imm = (InputMethodManager)Activity.GetSystemService(Context.InputMethodService);
+            imm.HideSoftInputFromWindow(root.WindowToken, HideSoftInputFlags.NotAlways);
         }
     }
 }

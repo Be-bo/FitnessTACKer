@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+	android:orientation="horizontal"
+	android:animateLayoutChanges="true"
+    android:background="@drawable/listitemexercisebackground"
+	android:id="@+id/root_exercise_item"
+	>
+
+		<EditText
+		android:id="@+id/exercise_name_edittext"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:hint="Exercise name"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="8dp"
+		android:layout_marginLeft="8dp"
+		android:maxLines="1"
+		android:inputType="text"
+		android:scrollHorizontally="true"
+		android:layout_weight="1"
+		/>
+
+	<ImageButton
+		android:id="@+id/check_btn"
+		android:layout_width="60dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/check_btn_selector"
+		style="@style/Widget.AppCompat.Button.Borderless"
+		android:layout_gravity="center"
+		android:padding="12dp"
+		android:scaleType="fitCenter"
+		android:scaleX="0.5"
+		android:scaleY="0.5"
+		/>
+	
+</LinearLayout>
