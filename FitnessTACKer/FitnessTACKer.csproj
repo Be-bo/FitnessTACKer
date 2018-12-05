@@ -239,6 +239,7 @@
     <AndroidResource Include="Resources\drawable\plate45_10.png" />
     <AndroidResource Include="Resources\drawable\plate45.png" />
     <AndroidResource Include="Resources\layout\Model.axml" />
+    <AndroidResource Include="Resources\drawable\ic_keyboard_hide_black_24dp.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml" />
