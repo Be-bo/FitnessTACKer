@@ -1,13 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <TextView
-        android:text="Workout"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textView3"
-        android:gravity="center" />
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        app:title="Your Workouts"
+        app:titleTextColor="@color/textIcon">
+    </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.SearchView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="38.5dp"
+        android:elevation="2dp"
+        android:id="@+id/searchView1"
+        app:queryHint="Search here..."
+        android:background="#fff"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mRecyclerID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
+

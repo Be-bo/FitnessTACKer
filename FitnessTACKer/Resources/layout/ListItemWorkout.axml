@@ -11,12 +11,15 @@
     card_view:cardCornerRadius="8dp"
     card_view:cardUseCompatPadding="true"
     android:clickable="true"
-    android:focusable="true"
+    android:focusable="false"
+	android:id="@+id/root_list_item_workout"
     android:background="?android:attr/selectableItemBackground">
 
   <LinearLayout
   android:orientation="vertical"
   android:layout_width="match_parent"
+  android:descendantFocusability="beforeDescendants"
+  android:focusableInTouchMode="true"
   android:layout_height="wrap_content" android:animateLayoutChanges="true">
 
     <LinearLayout
@@ -36,7 +39,7 @@ android:layout_width="match_parent" android:layout_height="wrap_content" android
   android:layout_gravity="center_vertical"
   android:layout_weight="1"/>
 
-      <ImageButton
+      <ImageButton android:id="@+id/more_options_btn"
         	android:layout_width="48dp" android:layout_height="48dp"
           android:src="@drawable/ic_more_horiz_black_36dp" android:tint="@color/primary"
           style="?android:attr/borderlessButtonStyle"/>
