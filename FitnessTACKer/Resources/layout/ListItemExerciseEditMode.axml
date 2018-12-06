@@ -15,7 +15,7 @@
 		android:id="@+id/exercise_name_edittext"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:hint="Exercise name"
+		android:hint="Exercise name (required)"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_marginTop="8dp"
 		android:layout_marginBottom="8dp"

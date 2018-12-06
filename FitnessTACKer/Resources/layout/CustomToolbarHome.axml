@@ -12,6 +12,7 @@
 		android:layout_marginTop="4dp">
 	
 		<ImageButton
+			android:id="@+id/left_arrow_btn"
 			android:layout_width="48dp"
 			android:layout_height="48dp"
 			style="?android:attr/borderlessButtonStyle"
@@ -31,6 +32,7 @@
 		/>
 
 			<ImageButton
+			android:id="@+id/right_arrow_btn"
 			android:layout_width="48dp"
 			android:layout_height="48dp"
 			style="?android:attr/borderlessButtonStyle"
