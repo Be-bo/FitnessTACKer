@@ -134,6 +134,8 @@
     <Compile Include="WorkoutItem.cs" />
     <Compile Include="WorkoutViewHolder.cs" />
     <Compile Include="Keyboard.cs" />
+    <Compile Include="FilterHelper.cs" />
+    <Compile Include="MyAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -236,6 +238,8 @@
     <AndroidResource Include="Resources\drawable\plate45_9.png" />
     <AndroidResource Include="Resources\drawable\plate45_10.png" />
     <AndroidResource Include="Resources\drawable\plate45.png" />
+    <AndroidResource Include="Resources\layout\Model.axml" />
+    <AndroidResource Include="Resources\drawable\ic_keyboard_hide_black_24dp.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml" />

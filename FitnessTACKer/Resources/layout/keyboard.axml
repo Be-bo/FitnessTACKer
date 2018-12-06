@@ -4,7 +4,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@android:color/white">
 
         <TextView
             android:id="@+id/result"
@@ -95,12 +96,19 @@
             <ImageButton
                 android:id="@+id/button_delete"
                 android:layout_width="20dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_arrow_back_black_24dp"
                 android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
+        
+        
+        
+        
+        
+        
+        
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -115,19 +123,30 @@
 
                 <ImageButton
                     android:id="@+id/barbell"
-                    android:layout_width="130dp"
+                    android:layout_width="140dp"
                     android:layout_height="50dp"
                     android:background="@drawable/buttonshapeimage"
                     android:scaleType="fitXY"
+                    android:layout_weight="1"
                     android:src="@drawable/barbell" />
 
                 <ImageButton
                     android:id="@+id/ez"
-                    android:layout_width="130dp"
+                    android:layout_width="140dp"
                     android:layout_height="50dp"
                     android:background="@drawable/buttonshapeimage"
                     android:scaleType="fitXY"
+                    android:layout_weight="1"
                     android:src="@drawable/ez" />
+                
+                <ImageButton
+                    android:id="@+id/keyboard_hide"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_keyboard_hide_black_24dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_horizontal"/>
             </LinearLayout>
 
             <LinearLayout
@@ -150,7 +169,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal">
-
                     <ImageButton
                         android:id="@+id/plate2_5"
                         android:layout_width="50dp"
@@ -158,7 +176,6 @@
                         android:background="@drawable/buttonshapeimage"
                         android:scaleType="fitCenter"
                         android:src="@drawable/plate2_5" />
-
                     <ImageButton
                         android:id="@+id/plate5"
                         android:layout_width="50dp"
@@ -179,6 +196,7 @@
                     android:id="@+id/plate35"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+                    android:layout_weight="1"
                     android:background="@drawable/buttonshapeimage"
                     android:scaleType="fitCenter"
                     android:src="@drawable/plate35" />
@@ -187,6 +205,7 @@
                     android:id="@+id/plate10"
                     android:layout_width="90dp"
                     android:layout_height="60dp"
+                    android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/buttonshapeimage"
                     android:scaleType="fitCenter"
@@ -195,13 +214,13 @@
 
             <LinearLayout
                 android:id="@+id/clear_done_25_layer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageButton
                     android:id="@+id/plate25"
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_height="80dp"                  
                     android:background="@drawable/buttonshapeimage"
                     android:scaleType="fitCenter"
                     android:src="@drawable/plate25" />

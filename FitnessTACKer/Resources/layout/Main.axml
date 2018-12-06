@@ -5,11 +5,22 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <FitnessTACKer.Keyboard
+        android:id="@+id/keyboard_weights"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:elevation="20dp"
+        android:visibility="gone"
+        />
+    
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" 
         android:layout_above="@+id/bottom_navigation"/>
+    
     <android.support.design.widget.BottomNavigationView
       android:id="@+id/bottom_navigation"
       android:layout_width="match_parent"
@@ -22,4 +33,5 @@
       app:elevation="16dp"
       app:menu="@menu/bottom_navigation_main" />
       <!-- Note: background color is required to get elevation -->
+    
   </RelativeLayout>
