@@ -1,28 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	 xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:fillViewport="true"
+	android:id="@+id/nest_scrollView">
 
-	<include layout="@layout/CustomToolbarHome"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 
-	<android.support.v7.widget.RecyclerView
+		<include android:layout_gravity="top" android:id="@+id/toolbar" layout="@layout/CustomToolbarHome"/>
+
+		<android.support.v7.widget.RecyclerView
 		android:id="@+id/recyclerview_home"
-		android:layout_width="fill_parent"
+		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="1"
 		android:scrollbars="vertical"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior" 
+		android:layout_below="@+id/toolbar"
 		>
-	</android.support.v7.widget.RecyclerView>
+		</android.support.v7.widget.RecyclerView>
 
-	<Button	android:layout_width="wrap_content"
+		<Button	android:layout_width="wrap_content"
 		android:layout_height="48dp"
 		android:padding="8dp"
 		android:layout_marginBottom="8dp"
 		android:drawableLeft="@drawable/ic_add_white_36dp"
-		android:layout_gravity="center_horizontal"
+		android:layout_gravity="bottom|center_horizontal"
 		android:text="@string/add_workout"
 		android:background="@color/primary"
 		android:textColor="#ffffff"
-	/>
-</LinearLayout>
+		android:id="@+id/add_workout_btn"
+		/>
+
+	</LinearLayout>
+	
+</android.support.v4.widget.NestedScrollView>

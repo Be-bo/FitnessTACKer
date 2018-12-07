@@ -15,7 +15,7 @@ using Android.Views.InputMethods;
 
 namespace FitnessTACKer
 {
-    public class Keyboard : LinearLayout{
+    public class Keyboard : LinearLayout, Java.IO.ISerializable{
 
         private SparseArray<String> keyValues = new SparseArray<String>();
         private InputConnection inputConnection;
@@ -38,6 +38,7 @@ namespace FitnessTACKer
         private ImageButton plate2_5_button;
         private ImageButton barbell_button;
         private ImageButton ez_button;
+        private ImageButton hide_keyboard;
         private TextView result;
         private Button button_clear;
         private Button button_done;
@@ -50,7 +51,10 @@ namespace FitnessTACKer
         private int plate2_5 = 0;
         private int barbell = 0;
         private int ez = 0;
+        public View keyboard;
        
+        public Keyboard():
+        base(null){}
 
         public Keyboard(Context context) :
             this(context, null, 0){
@@ -65,9 +69,9 @@ namespace FitnessTACKer
             init(context, attrs);
         }
 
-        void init(Context context, IAttributeSet attrs){
+       public void init(Context context, IAttributeSet attrs){
             //initialize buttons
-            LayoutInflater.From(context).Inflate(Resource.Layout.keyboard, this, true);
+            keyboard = LayoutInflater.From(context).Inflate(Resource.Layout.keyboard, this, true);
             mButton1 = FindViewById<Button>(Resource.Id.button_1);
             mButton2 = FindViewById<Button>(Resource.Id.button_2);
             mButton3 = FindViewById<Button>(Resource.Id.button_3);
@@ -86,10 +90,11 @@ namespace FitnessTACKer
             plate10_button = FindViewById<ImageButton>(Resource.Id.plate10);
             plate5_button = FindViewById<ImageButton>(Resource.Id.plate5);
             plate2_5_button = FindViewById<ImageButton>(Resource.Id.plate2_5);
-            result = FindViewById<Button>(Resource.Id.result);
+            result = FindViewById<TextView>(Resource.Id.result);
             barbell_button = FindViewById<ImageButton>(Resource.Id.barbell);
             ez_button = FindViewById<ImageButton>(Resource.Id.ez);
             button_delete = FindViewById<ImageButton>(Resource.Id.button_delete);
+            hide_keyboard = FindViewById<ImageButton>(Resource.Id.keyboard_hide);
 
             // set button click listeners
 
@@ -145,6 +150,10 @@ namespace FitnessTACKer
             {
                 this.OnClick("ez");
             };
+            hide_keyboard.Click += delegate
+            {
+                keyboard.Visibility = ViewStates.Gone;
+            };
 
             // map buttons IDs to input strings
             keyValues.Put(Resource.Id.button_1, "1");
@@ -185,7 +194,7 @@ namespace FitnessTACKer
         {
 
             // do nothing if the InputConnection has not been set yet
-            if (inputConnection == null) return;
+            //if (inputConnection == null) return;
 
             if (id.Equals("clear"))
             {
@@ -233,6 +242,7 @@ namespace FitnessTACKer
             }
             else if (id.Equals("plate35"))
             {
+
                 switch (plate35)
                 {
                     case 0: plate35_button.SetImageResource(Resource.Drawable.plate35_1); plate35++; break;

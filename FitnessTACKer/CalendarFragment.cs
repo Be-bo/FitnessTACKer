@@ -5,6 +5,8 @@ using Android.Widget;
 using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using FitnessTACKer.Adapter;
+using System;
+
 
 namespace FitnessTACKer
 {
