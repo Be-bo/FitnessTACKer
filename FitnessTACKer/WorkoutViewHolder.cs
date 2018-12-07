@@ -19,6 +19,7 @@ namespace FitnessTACKer
         // EDIT MODE UI
         public LinearLayout EditModeRoot { get; set; }
         public EditText NewWorkoutName { get; set; }
+        public ImageButton DeleteWorkoutBtn { get; set; }
 
         // MORE OPTIONS MENU
         public LinearLayout MoreOptionsMenu { get; set; }
@@ -38,6 +39,7 @@ namespace FitnessTACKer
 
             EditModeRoot = itemView.FindViewById<LinearLayout>(Resource.Id.layout_edit_mode);
             NewWorkoutName = itemView.FindViewById<EditText>(Resource.Id.new_workout_name_edittext);
+            DeleteWorkoutBtn = itemView.FindViewById<ImageButton>(Resource.Id.delete_workout_btn);
 
             MoreOptionsMenu = itemView.FindViewById<LinearLayout>(Resource.Id.more_options_menu);
             SaveWorkoutBtn = itemView.FindViewById<Button>(Resource.Id.save_workout_btn);
