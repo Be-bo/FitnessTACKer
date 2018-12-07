@@ -3053,7 +3053,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f09003d
 			public const int bottom = 2131296317;
-			
+
 			// aapt resource value: 0x7f0900d3
 			public const int bottom_navigation = 2131296467;
 			

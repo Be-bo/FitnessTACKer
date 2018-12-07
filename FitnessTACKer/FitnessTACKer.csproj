@@ -144,6 +144,10 @@
     <Compile Include="MyAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ExtendedCalendarView\.classpath" />
+    <None Include="ExtendedCalendarView\.project" />
+    <None Include="ExtendedCalendarView\build.properties" />
+    <None Include="ExtendedCalendarView\project.properties" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -446,6 +450,60 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_white_18dp.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ExtendedCalendarView\AndroidManifest.xml" />
+    <Content Include="ExtendedCalendarView\bin\AndroidManifest.xml" />
+    <Content Include="ExtendedCalendarView\bin\extendedcalendarview.jar" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\blue.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\day_bg.9.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\green.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\navigation_next_item.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\navigation_previous_item.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\orange.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\purple.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-hdpi\red.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-xhdpi\day_bg.9.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-xhdpi\navigation_next_item.png" />
+    <Content Include="ExtendedCalendarView\bin\res\crunch\drawable-xhdpi\navigation_previous_item.png" />
+    <Content Include="ExtendedCalendarView\proguard-project.txt" />
+    <Content Include="ExtendedCalendarView\res\color\date_number_text_color.xml" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\blue.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\day_bg.9.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\green.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\ic_launcher.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\navigation_next_item.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\navigation_previous_item.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\orange.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\purple.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\quickcontact_badge_overlay_normal_light.9.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-hdpi\red.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-mdpi\ic_launcher.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-xhdpi\day_bg.9.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-xhdpi\ic_launcher.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-xhdpi\navigation_next_item.png" />
+    <Content Include="ExtendedCalendarView\res\drawable-xhdpi\navigation_previous_item.png" />
+    <Content Include="ExtendedCalendarView\res\drawable\date_number_background.xml" />
+    <Content Include="ExtendedCalendarView\res\drawable\day_selected.xml" />
+    <Content Include="ExtendedCalendarView\res\drawable\normal_day.xml" />
+    <Content Include="ExtendedCalendarView\res\drawable\today.xml" />
+    <Content Include="ExtendedCalendarView\res\layout\day_of_week.xml" />
+    <Content Include="ExtendedCalendarView\res\layout\day_view.xml" />
+    <Content Include="ExtendedCalendarView\res\values-land\dimen.xml" />
+    <Content Include="ExtendedCalendarView\res\values-sw600dp-land\dimen.xml" />
+    <Content Include="ExtendedCalendarView\res\values-sw600dp\dimen.xml" />
+    <Content Include="ExtendedCalendarView\res\values-sw720dp-land\dimen.xml" />
+    <Content Include="ExtendedCalendarView\res\values-sw720dp\dimen.xml" />
+    <Content Include="ExtendedCalendarView\res\values-v11\styles.xml" />
+    <Content Include="ExtendedCalendarView\res\values-v14\styles.xml" />
+    <Content Include="ExtendedCalendarView\res\values\dimen.xml" />
+    <Content Include="ExtendedCalendarView\res\values\strings.xml" />
+    <Content Include="ExtendedCalendarView\res\values\styles.xml" />
+    <Content Include="ExtendedCalendarView\Screenshot_2014-01-10-19-57-06_framed.png" />
+    <Content Include="ExtendedCalendarView\Screenshot_2014-04-04-18-11-16.png" />
+    <Content Include="ExtendedCalendarView\src\com\tyczj\extendedcalendarview\CalendarAdapter.java" />
+    <Content Include="ExtendedCalendarView\src\com\tyczj\extendedcalendarview\CalendarProvider.java" />
+    <Content Include="ExtendedCalendarView\src\com\tyczj\extendedcalendarview\Day.java" />
+    <Content Include="ExtendedCalendarView\src\com\tyczj\extendedcalendarview\Event.java" />
+    <Content Include="ExtendedCalendarView\src\com\tyczj\extendedcalendarview\ExtendedCalendarView.java" />
     <AndroidResource Include="Resources\layout\ExerciseSetItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
