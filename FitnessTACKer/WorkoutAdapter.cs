@@ -50,11 +50,13 @@ namespace FitnessTACKer.Adapter
             {
                 ToggleEditModeExisting(false, workoutHolder, position);
                 ToggleEditModeNewWorkout(true, workoutHolder, position);
-            }
-            else if (data[position].editModeExisting)
+                ResetListeners(workoutHolder, position);
+
+            } else if (data[position].editModeExisting)
             {
-                // ToggleEditModeNewWorkout(false, workoutHolder, position);
+                ToggleEditModeNewWorkout(false, workoutHolder, position);
                 ToggleEditModeExisting(true, workoutHolder, position);
+                ResetListeners(workoutHolder, position);
             }
             else
             {
@@ -150,6 +152,63 @@ namespace FitnessTACKer.Adapter
             }
         }
 
+        public void ResetListeners(WorkoutViewHolder workoutHolder, int position)
+        {
+            if (workoutHolder.AddExerciseBtn.HasOnClickListeners)
+            {
+                workoutHolder.AddExerciseBtn.Click -= delegate (object senderExercise, EventArgs eExercise) {
+                    AddExerciseOnClick(senderExercise, eExercise, workoutHolder.AddExerciseBtn, workoutHolder.ExpandedLayout, position, workoutHolder.Root);
+                };
+            }
+
+            if (workoutHolder.MoreOptionsButton.HasOnClickListeners)
+            {
+                workoutHolder.MoreOptionsButton.Click -= delegate (object sender, EventArgs e)
+                {
+                    workoutHolder.MoreOptionsButton.Visibility = ViewStates.Invisible;
+                    workoutHolder.MoreOptionsMenu.Visibility = ViewStates.Visible;
+                };
+            }
+            if (workoutHolder.SaveWorkoutBtn.HasOnClickListeners)
+            {
+                workoutHolder.SaveWorkoutBtn.Click -= delegate (object sender2, EventArgs e2)
+                {
+                    workoutHolder.MoreOptionsButton.Visibility = ViewStates.Visible;
+                    workoutHolder.MoreOptionsMenu.Visibility = ViewStates.Gone;
+                    Toast.MakeText(context, context.GetString(Resource.String.workout_saved, workoutHolder.Title.Text.ToString()), ToastLength.Long).Show();
+                };
+            }
+            if (workoutHolder.EditWorkoutBtn.HasOnClickListeners)
+            {
+                workoutHolder.EditWorkoutBtn.Click -= delegate (object sender3, EventArgs e3)
+                {
+                    data[position].editModeExisting = true;
+                    NotifyItemChanged(position);
+                };
+            }
+            String[] exercisesList = new String[0];
+            if (data[position].exercises != null)
+            {
+                exercisesList = data[position].exercises.Split('\n');
+                for (int i = 0; i < exercisesList.Length; i++)
+                {
+                    View exerciseView = workoutHolder.ExpandedLayout.GetChildAt(i);
+                    LinearLayout rootExerciseItem = exerciseView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item);
+                    Button addSetBtn = exerciseView.FindViewById<Button>(Resource.Id.add_set_btn);
+                    
+                    if (rootExerciseItem != null && rootExerciseItem.HasOnClickListeners)
+                    {
+                        rootExerciseItem.Click -= delegate (object rootSender, EventArgs rootE) { ExerciseItemOnClick(rootSender, rootE); };
+                    }
+
+                    if (addSetBtn != null && addSetBtn.HasOnClickListeners)
+                    {
+                        addSetBtn.Click -= delegate (object addSetSender, EventArgs addSetE) { ExerciseItemOnClick(addSetSender, addSetE); };
+                    }
+                }
+            }
+        }
+
         private void ConfigureMoreOptionsMenu(WorkoutViewHolder workoutViewHolder, int position)
         {
             if (!workoutViewHolder.MoreOptionsButton.HasOnClickListeners)
@@ -185,7 +244,7 @@ namespace FitnessTACKer.Adapter
             if (edit)
             {
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Visible;
-                //workoutHolder.SaveChangesBtn.Visibility = ViewStates.Visible;
+                workoutHolder.SaveChangesBtn.Visibility = ViewStates.Visible;
 
                 workoutHolder.LayoutTitleAndMenu.Visibility = ViewStates.Gone;
                 workoutHolder.Exercises.Visibility = ViewStates.Gone;
@@ -196,6 +255,11 @@ namespace FitnessTACKer.Adapter
 
                 workoutHolder.NewWorkoutName.Text = data[position].title;
                 workoutHolder.NewWorkoutName.RequestFocus();
+
+                workoutHolder.NewWorkoutName.TextChanged += delegate (object newNameTextChanged, TextChangedEventArgs eNewName)
+                {
+                    WorkoutNameTextChangeEvent(newNameTextChanged, eNewName, workoutHolder.SaveChangesBtn);
+                };
 
                 String[] exercises = null;
                 if (data[position].exercises != null && data[position].exercises.Length > 0)
@@ -209,32 +273,18 @@ namespace FitnessTACKer.Adapter
                     BottomMargin = 4
                 };
 
-                bool itemDeleted = false;
-                if (exercises != null)
+                if (exercises!=null)
                 {
                     for (int i = 0; i < exercises.Length; i++)
                     {
                         View editModeExerciseView = LayoutInflater.From(context).Inflate(Resource.Layout.ListItemExerciseEditMode, null);
                         editModeExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text = exercises[i];
                         ImageButton deleteExerciseBtn = editModeExerciseView.FindViewById<ImageButton>(Resource.Id.delete_exercise_btn);
-                        if (!deleteExerciseBtn.HasOnClickListeners)
-                        {
-                            deleteExerciseBtn.Click += delegate (object sender, EventArgs e)
-                            {
-                                if (i < workoutHolder.ExpandedLayout.ChildCount && !itemDeleted)
-                                {
-                                    workoutHolder.ExpandedLayout.RemoveViewAt(i);
-                                }
-                                else if (i < workoutHolder.ExpandedLayout.ChildCount && itemDeleted && (i - 1) > -1)
-                                {
-                                    workoutHolder.ExpandedLayout.RemoveViewAt(i - 1);
-                                }
-                                itemDeleted = true;
-                            };
-                        }
 
                         editModeExerciseView.LayoutParameters = ll;
                         workoutHolder.ExpandedLayout.AddView(editModeExerciseView);
+
+                        SetupTrashcansListenerEditMode(workoutHolder.ExpandedLayout, deleteExerciseBtn, editModeExerciseView);
                     }
 
                 }
@@ -243,24 +293,119 @@ namespace FitnessTACKer.Adapter
                 {
                     workoutHolder.DeleteWorkoutBtn.Click += delegate (object s, EventArgs e2) { ShowDialogDeleteWorkout(position); };
                 }
-
-                //if (!workoutHolder.SaveChangesBtn.HasOnClickListeners)
-                //{
-                //    workoutHolder.SaveChangesBtn.Click += delegate (object saveChangesSender, EventArgs eSaveChanges) {
-                //        SaveChangesOnClick(saveChangesSender, eSaveChanges);
-                //    };
-                //}
-
-            }
             else
+                if (!workoutHolder.SaveChangesBtn.HasOnClickListeners)
+                {
+                    workoutHolder.SaveChangesBtn.Click += delegate (object saveChangesSender, EventArgs eSaveChanges) {
+                        SaveChangesOnClick(saveChangesSender, eSaveChanges, workoutHolder, position);
+                    };
+                }
+                
+            } else
             {
                 workoutHolder.LayoutTitleAndMenu.Visibility = ViewStates.Visible;
                 workoutHolder.Exercises.Visibility = ViewStates.Visible;
                 workoutHolder.AddExerciseBtn.Visibility = ViewStates.Visible;
 
-                //workoutHolder.SaveChangesBtn.Visibility = ViewStates.Gone;
+                workoutHolder.SaveChangesBtn.Visibility = ViewStates.Gone;
+
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Gone;
                 workoutHolder.ExpandedLayout.Visibility = ViewStates.Gone;
+
+                // reset listeners
+                workoutHolder.NewWorkoutName.TextChanged -= delegate (object newNameTextChanged, TextChangedEventArgs eNewName)
+                {
+                    WorkoutNameTextChangeEvent(newNameTextChanged, eNewName, workoutHolder.SaveChangesBtn);
+                };
+
+                String[] exercises = null;
+                if (data[position].exercises != null && data[position].exercises.Length > 0)
+                {
+                    exercises = data[position].exercises.Split('\n');
+                }
+
+                if (exercises != null)
+                {
+                    for (int i = 0; i < exercises.Length; i++)
+                    {
+                        View editModeExerciseView = workoutHolder.ExpandedLayout.GetChildAt(i);
+                        if (editModeExerciseView != null && editModeExerciseView.FindViewById<ImageButton>(Resource.Id.delete_exercise_btn)!=null)
+                        {
+                            editModeExerciseView.FindViewById<ImageButton>(Resource.Id.delete_exercise_btn).Click -= delegate (object sender, EventArgs e)
+                            {
+                                int indexToDelete = FindChildIndexByExerciseName(workoutHolder.ExpandedLayout, editModeExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text);
+                                if (indexToDelete != -1)
+                                {
+                                    DeleteExerciseEditModeOnClick(sender, e, workoutHolder.ExpandedLayout, indexToDelete);
+                                }
+                            };
+                        }
+                    }
+
+                }
+
+                if (workoutHolder.DeleteWorkoutBtn.HasOnClickListeners)
+                {
+                    workoutHolder.DeleteWorkoutBtn.Click -= delegate (object s, EventArgs e2) { ShowDialogDeleteWorkout(position); };
+                }
+
+                if (workoutHolder.SaveChangesBtn.HasOnClickListeners)
+                {
+                    workoutHolder.SaveChangesBtn.Click -= delegate (object saveChangesSender, EventArgs eSaveChanges) {
+                        SaveChangesOnClick(saveChangesSender, eSaveChanges, workoutHolder, position);
+                    };
+                }
+            }
+        }
+
+        private void SetupTrashcansListenerEditMode(LinearLayout expandedLayout, ImageButton deleteExerciseBtn, View editModeExerciseView)
+        {
+            deleteExerciseBtn.Click += delegate (object sender, EventArgs e)
+            {
+                int indexToDelete = FindChildIndexByExerciseName(expandedLayout, editModeExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text);
+                if (indexToDelete != -1)
+                {
+                    DeleteExerciseEditModeOnClick(sender, e, expandedLayout, indexToDelete);
+                }
+            };
+        }
+
+        public int FindChildIndexByExerciseName(LinearLayout expandedLayout, string exerciseName)
+        {
+            for (int i=0; i<expandedLayout.ChildCount; i++)
+            {
+                if (expandedLayout.GetChildAt(i).FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text == exerciseName)
+                    return i;
+            }
+            return -1;
+        }
+
+        public void DeleteExerciseEditModeOnClick(object sender, EventArgs e, LinearLayout expandedLayout, int i)
+        {
+            expandedLayout.RemoveViewAt(i);
+        }
+
+        public void WorkoutNameTextChangeEvent(object sender, TextChangedEventArgs e, Button saveChangesBtn)
+        {
+            saveChangesBtn.Enabled = e.Text.ToString().Length > 0;
+        }
+
+        public void SaveChangesOnClick(object sender, EventArgs e, WorkoutViewHolder workoutHolder, int position)
+        {
+            if (position > -1 && position < data.Count)
+            {
+                data[position].title = workoutHolder.NewWorkoutName.Text.ToString();
+                data[position].exercises = "";
+                for (int i = 0; i < workoutHolder.ExpandedLayout.ChildCount; i++)
+                {
+                    string exercise = workoutHolder.ExpandedLayout.GetChildAt(i).FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text.ToString();
+                    if (exercise.Length > 0)
+                    {
+                        data[position].exercises += exercise + (i == workoutHolder.ExpandedLayout.ChildCount - 1 ? "" : "\n"); // TODO fix this ?
+                    }
+                }
+                data[position].editModeExisting = false;
+                NotifyItemChanged(position);
             }
         }
 
@@ -326,7 +471,8 @@ namespace FitnessTACKer.Adapter
                         else
                         {
                             data.RemoveAt(position);
-                            NotifyItemRemoved(position);
+                            // NotifyItemRemoved(position);
+                            NotifyDataSetChanged();
                             HideKeyboard(workoutHolder.NewWorkoutName);
                         }
                     };
@@ -337,6 +483,62 @@ namespace FitnessTACKer.Adapter
             {
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Gone;
                 workoutHolder.RootWorkoutLayout.Visibility = ViewStates.Visible;
+
+                // reset listeners
+                workoutHolder.NewWorkoutName.FocusChange -= new EventHandler<View.FocusChangeEventArgs>((sender, e) =>
+                {
+                    string newWorkoutName = workoutHolder.NewWorkoutName.Text.ToString();
+                    if (!e.HasFocus && newWorkoutName.Length > 0)
+                    {
+                        // save new workout name
+                        if (position > -1 && data.Count > position)
+                        {
+                            data[position].title = newWorkoutName;
+                            data[position].editModeNewWorkout = false;
+                            HideKeyboard(workoutHolder.NewWorkoutName);
+                        }
+                    }
+                });
+                workoutHolder.NewWorkoutName.EditorAction -= (sender, e) => {
+                    if (e.ActionId == ImeAction.Done)
+                    {
+                        string newWorkoutName = workoutHolder.NewWorkoutName.Text.ToString();
+                        if (newWorkoutName.Length > 0)
+                        {
+                            // save new workout name
+                            data[position].title = newWorkoutName;
+                            data[position].editModeNewWorkout = false;
+                            data[position].expanded = true;
+                            HideKeyboard(workoutHolder.NewWorkoutName);
+                            NotifyItemChanged(position);
+                        }
+                    }
+                    else
+                    {
+                        e.Handled = false;
+                    }
+                };
+                if (workoutHolder.DeleteWorkoutBtn.HasOnClickListeners)
+                {
+                    workoutHolder.DeleteWorkoutBtn.Click -= delegate (object senderDeleteWorkout, EventArgs eDeleteWorkout)
+                    {
+                        if (workoutHolder.NewWorkoutName.Text.ToString().Length > 0)
+                        {
+                            string newWorkoutName = workoutHolder.NewWorkoutName.Text.ToString();
+                            ShowConfirmDialog(context.GetString(Resource.String.confirm_save_changes),
+                                context.GetString(Resource.String.save), context.GetString(Resource.String.dont_save), position,
+                                newWorkoutName, workoutHolder);
+                        }
+                        else
+                        {
+                            data.RemoveAt(position);
+                            // NotifyItemRemoved(position);
+                            NotifyDataSetChanged();
+                            HideKeyboard(workoutHolder.NewWorkoutName);
+                        }
+                    };
+                }
+
             }
         }
 
@@ -374,7 +576,8 @@ namespace FitnessTACKer.Adapter
             });
             builder.SetNegativeButton(neg, delegate (object s2, DialogClickEventArgs ev2) {
                 data.RemoveAt(adapterPosition);
-                NotifyItemRemoved(adapterPosition);
+                NotifyDataSetChanged();
+                // NotifyItemRemoved(adapterPosition);
                 HideKeyboard(workoutHolder.NewWorkoutName);
             });
 
@@ -503,6 +706,7 @@ namespace FitnessTACKer.Adapter
                     ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set).Visibility = ViewStates.Visible;
                     ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set_title).Visibility = ViewStates.Visible;
                     ((LinearLayout)sender).FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Visible;
+
                     //set keyboard for both EditTexts where user enters weight
                     EditText target = ((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target_weight);
                     EditText final = ((LinearLayout)sender).FindViewById<EditText>(Resource.Id.final_weight);
