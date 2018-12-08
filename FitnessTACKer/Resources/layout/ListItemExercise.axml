@@ -54,7 +54,7 @@
 		android:visibility="gone">
 
 		<include
-            android:id="@@+id/included_item"
+       
         layout="@layout/ExerciseSetItem"/>
 
 		</LinearLayout>

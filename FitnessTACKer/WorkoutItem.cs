@@ -5,5 +5,7 @@
         public string title { get; set; }
         public bool expanded { get; set; }
         public string exercises { get; set; }
+        public bool editModeNewWorkout { get; set; }
+        public bool editModeExisting { get; set; }
     }
 }

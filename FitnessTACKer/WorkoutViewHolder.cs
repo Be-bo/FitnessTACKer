@@ -14,6 +14,18 @@ namespace FitnessTACKer
         public Button AddExerciseBtn { get; set; }
         public CardView Root { get; set; }
         public ImageButton MoreOptionsButton { get; set; }
+        public LinearLayout RootWorkoutLayout { get; set; }
+        public LinearLayout LayoutTitleAndMenu { get; set; }
+
+        // EDIT MODE UI
+        public LinearLayout EditModeRoot { get; set; }
+        public EditText NewWorkoutName { get; set; }
+        public ImageButton DeleteWorkoutBtn { get; set; }
+
+        // MORE OPTIONS MENU
+        public LinearLayout MoreOptionsMenu { get; set; }
+        public Button SaveWorkoutBtn { get; set; }
+        public Button EditWorkoutBtn { get; set; }
 
         public WorkoutViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
@@ -24,6 +36,16 @@ namespace FitnessTACKer
             AddExerciseBtn = itemView.FindViewById<Button>(Resource.Id.add_exercise_btn);
             Root = itemView.FindViewById<CardView>(Resource.Id.root_list_item_workout);
             MoreOptionsButton = itemView.FindViewById<ImageButton>(Resource.Id.more_options_btn);
+            RootWorkoutLayout = itemView.FindViewById<LinearLayout>(Resource.Id.root_workout_layout);
+            LayoutTitleAndMenu = itemView.FindViewById<LinearLayout>(Resource.Id.linearlayout_workouttitle_menu);
+
+            EditModeRoot = itemView.FindViewById<LinearLayout>(Resource.Id.layout_edit_mode);
+            NewWorkoutName = itemView.FindViewById<EditText>(Resource.Id.new_workout_name_edittext);
+            DeleteWorkoutBtn = itemView.FindViewById<ImageButton>(Resource.Id.delete_workout_btn);
+
+            MoreOptionsMenu = itemView.FindViewById<LinearLayout>(Resource.Id.more_options_menu);
+            SaveWorkoutBtn = itemView.FindViewById<Button>(Resource.Id.save_workout_btn);
+            EditWorkoutBtn = itemView.FindViewById<Button>(Resource.Id.edit_workout_btn);
 
             // AddExerciseBtn.Click += (sender, e) => listener(base.AdapterPosition);
             itemView.Click += (sender, e) => listener(base.AdapterPosition);

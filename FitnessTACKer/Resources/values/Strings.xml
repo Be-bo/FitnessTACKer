@@ -25,4 +25,9 @@
   <string name="settings">Settings</string>
   <string name="workout">Workout</string>
   <string name="add_workout">Add Workout</string>
+
+  <string name="workout_saved">%s is now saved to your workouts</string>
+  <string name="confirm_save_changes">Save Changes?</string>
+  <string name="save">Save</string>
+  <string name="dont_save">Don\'t Save</string>
 </resources>
