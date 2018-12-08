@@ -33,7 +33,7 @@ namespace FitnessTACKer
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView1);
 
             RecyclerViewData = new List<WorkoutItem>();
-            AdapterHome = new WorkoutAdapter(RecyclerViewData);
+            AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData);
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
 

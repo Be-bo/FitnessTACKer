@@ -15,6 +15,7 @@ namespace FitnessTACKer
         public CardView Root { get; set; }
         public ImageButton MoreOptionsButton { get; set; }
         public LinearLayout RootWorkoutLayout { get; set; }
+        public LinearLayout LayoutTitleAndMenu { get; set; }
 
         // EDIT MODE UI
         public LinearLayout EditModeRoot { get; set; }
@@ -36,6 +37,7 @@ namespace FitnessTACKer
             Root = itemView.FindViewById<CardView>(Resource.Id.root_list_item_workout);
             MoreOptionsButton = itemView.FindViewById<ImageButton>(Resource.Id.more_options_btn);
             RootWorkoutLayout = itemView.FindViewById<LinearLayout>(Resource.Id.root_workout_layout);
+            LayoutTitleAndMenu = itemView.FindViewById<LinearLayout>(Resource.Id.linearlayout_workouttitle_menu);
 
             EditModeRoot = itemView.FindViewById<LinearLayout>(Resource.Id.layout_edit_mode);
             NewWorkoutName = itemView.FindViewById<EditText>(Resource.Id.new_workout_name_edittext);
