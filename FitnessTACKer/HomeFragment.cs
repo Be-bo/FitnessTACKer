@@ -19,6 +19,7 @@ namespace FitnessTACKer
         private List<WorkoutItem> RecyclerViewData;
         private WorkoutAdapter AdapterHome;
         private View root;
+        private Keyboard keyboard;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -44,8 +45,10 @@ namespace FitnessTACKer
 
             RecyclerViewData = new List<WorkoutItem>();
 
+            keyboard = (Keyboard)Arguments.GetSerializable("keyboard");
+
             RecyclerView recyclerView = root.FindViewById<RecyclerView>(Resource.Id.recyclerview_home);
-            AdapterHome = new WorkoutAdapter(root.Context, RecyclerViewData);
+            AdapterHome = new WorkoutAdapter(root.Context, RecyclerViewData, keyboard, root);
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
             recyclerView.NestedScrollingEnabled = false;

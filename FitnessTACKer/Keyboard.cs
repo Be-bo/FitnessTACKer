@@ -39,7 +39,6 @@ namespace FitnessTACKer
         private ImageButton barbell_button;
         private ImageButton ez_button;
         private ImageButton hide_keyboard;
-        private TextView result;
         private Button button_clear;
         private Button button_done;
         private ImageButton button_delete;
@@ -52,6 +51,7 @@ namespace FitnessTACKer
         private int barbell = 0;
         private int ez = 0;
         public View keyboard;
+        private EditText editText;
        
         public Keyboard():
         base(null){}
@@ -69,7 +69,12 @@ namespace FitnessTACKer
             init(context, attrs);
         }
 
-       public void init(Context context, IAttributeSet attrs){
+        public void setCurrentEditText(EditText ed)
+        {
+            this.editText = ed;
+        }
+
+        public void init(Context context, IAttributeSet attrs){
             //initialize buttons
             keyboard = LayoutInflater.From(context).Inflate(Resource.Layout.keyboard, this, true);
             mButton1 = FindViewById<Button>(Resource.Id.button_1);
@@ -90,7 +95,6 @@ namespace FitnessTACKer
             plate10_button = FindViewById<ImageButton>(Resource.Id.plate10);
             plate5_button = FindViewById<ImageButton>(Resource.Id.plate5);
             plate2_5_button = FindViewById<ImageButton>(Resource.Id.plate2_5);
-            result = FindViewById<TextView>(Resource.Id.result);
             barbell_button = FindViewById<ImageButton>(Resource.Id.barbell);
             ez_button = FindViewById<ImageButton>(Resource.Id.ez);
             button_delete = FindViewById<ImageButton>(Resource.Id.button_delete);
@@ -153,6 +157,7 @@ namespace FitnessTACKer
             hide_keyboard.Click += delegate
             {
                 keyboard.Visibility = ViewStates.Gone;
+                this.clear();
             };
 
             // map buttons IDs to input strings
@@ -199,13 +204,12 @@ namespace FitnessTACKer
             if (id.Equals("clear"))
             {
                 clear();
-                result.Text = "0 lbs";
 
             }
             else if (id.Equals("done"))
             {
                 double res = plate45 * 45 + plate35 * 35 + plate25 * 25 + plate10 * 10 + plate5 * 5 + plate2_5 * 2.5 + barbell * 45 + ez * 25;
-                result.Text = (res.ToString() + " lbs");
+                editText.Text = (res.ToString());
 
             }
             //else if (v.Id == Resource.Id.button_delete)

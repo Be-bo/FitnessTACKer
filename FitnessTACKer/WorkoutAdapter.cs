@@ -21,11 +21,15 @@ namespace FitnessTACKer.Adapter
         private int currentPosition;
         private LinearLayout currentExpandedLayout;
         private View itemView;
+        private Keyboard weight_keyboard;
+        private View view;
 
-        public WorkoutAdapter(Context c, List<WorkoutItem> workouts)
+        public WorkoutAdapter(Context c, List<WorkoutItem> workouts, Keyboard k, View v)
         {
             data = workouts;
             context = c;
+            weight_keyboard = k;
+            view = v;
         }
 
         public override int ItemCount
@@ -173,6 +177,11 @@ namespace FitnessTACKer.Adapter
                     v.FindViewById<LinearLayout>(Resource.Id.layout_set).Visibility = ViewStates.Visible;
                     v.FindViewById<LinearLayout>(Resource.Id.layout_set_title).Visibility = ViewStates.Visible;
                     v.FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Visible;
+                    //set keyboard for both EditTexts where user enters weight
+                    EditText target = v.FindViewById<LinearLayout>(Resource.Id.included_item).FindViewById<EditText>(Resource.Id.target_weight);
+                    EditText final = v.FindViewById<LinearLayout>(Resource.Id.included_item).FindViewById<EditText>(Resource.Id.final_weight);
+                    setKeyboard(target);
+                    setKeyboard(final);
                 }
                 else
                 {
@@ -182,21 +191,42 @@ namespace FitnessTACKer.Adapter
                     v.FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Gone;
                     var im = ((InputMethodManager)context.GetSystemService(Android.Content.Context.InputMethodService));
 
-                    if (!v.FindViewById<EditText>(Resource.Id.target1).HasFocus)
-                    {
-                        im.HideSoftInputFromWindow(v.FindViewById<EditText>(Resource.Id.target1).WindowToken, 0);
-                    };
+                    //if (!v.FindViewById<EditText>(Resource.Id.target1).HasFocus)
+                    //{
+                    //    im.HideSoftInputFromWindow(v.FindViewById<EditText>(Resource.Id.target1).WindowToken, 0);
+                    //};
                 }
             }
             else if (v.Id == Resource.Id.add_set_btn)
             {
+                
                 View setView = LayoutInflater.From(context).Inflate(Resource.Layout.ExerciseSetItem, null);
                 LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
                 ll.TopMargin = 8; ll.BottomMargin = 8;
                 setView.LayoutParameters = ll;
                 ((v.Parent as LinearLayout).GetChildAt(2) as LinearLayout).AddView(setView);
+
+                //set keyboard for both EditTexts where user enters weight
+                EditText target = setView.FindViewById<EditText>(Resource.Id.target_weight);
+                EditText final = setView.FindViewById<EditText>(Resource.Id.final_weight);
+                setKeyboard(target);
+                setKeyboard(final);
             }
             
+        }
+
+        private void setKeyboard(EditText target){
+            target.SetRawInputType(InputTypes.ClassText);
+            target.SetTextIsSelectable(true);
+            //InputConnection ic = (InputConnection) target.OnCreateInputConnection(new EditorInfo());
+            //weight_keyboard.setInputConnection(ic);
+            target.Click += delegate
+            {
+                weight_keyboard.setCurrentEditText(target);
+                InputMethodManager imm = (InputMethodManager)context.GetSystemService(Context.InputMethodService);
+                imm.HideSoftInputFromWindow(view.WindowToken, 0);
+                weight_keyboard.Visibility = ViewStates.Visible;
+            };
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
