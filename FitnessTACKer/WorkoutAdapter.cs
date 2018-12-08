@@ -23,15 +23,15 @@ namespace FitnessTACKer.Adapter
         public event EventHandler<int> ItemClick;
         private Context context;
         private View itemView;
-        private Keyboard weight_keyboard;
-        private View view;
+        private View root_view;
+        private Keyboard keyboard;
 
-        public WorkoutAdapter(Context c, List<WorkoutItem> workouts, Keyboard k, View v)
+        public WorkoutAdapter(Context c, List<WorkoutItem> workouts, Keyboard key, View v)
         {
             data = workouts;
             context = c;
-            weight_keyboard = k;
-            view = v;
+            keyboard = key;
+            root_view = v;
         }
 
         public override int ItemCount
@@ -50,7 +50,8 @@ namespace FitnessTACKer.Adapter
             {
                 ToggleEditModeExisting(false, workoutHolder, position);
                 ToggleEditModeNewWorkout(true, workoutHolder, position);
-            } else if (data[position].editModeExisting)
+            }
+            else if (data[position].editModeExisting)
             {
                 // ToggleEditModeNewWorkout(false, workoutHolder, position);
                 ToggleEditModeExisting(true, workoutHolder, position);
@@ -94,6 +95,11 @@ namespace FitnessTACKer.Adapter
                             exerciseView.LayoutParameters = ll;
                             workoutHolder.ExpandedLayout.AddView(exerciseView);
 
+                            EditText target = exerciseView.FindViewById<EditText>(Resource.Id.target_weight);
+                            EditText final = exerciseView.FindViewById<EditText>(Resource.Id.final_weight);
+                            setKeyboard(target);
+                            setKeyboard(final);
+
                             if (i == 0)
                             {
                                 // expand first item
@@ -122,7 +128,7 @@ namespace FitnessTACKer.Adapter
                             }
                         }
                     }
-                   
+
                     if (workoutHolder.Exercises.Text.Length > 0 && workoutHolder.Exercises.Text.Split('\n').Length < exercisesList.Length)
                     {
                         View exerciseView = LayoutInflater.From(context).Inflate(Resource.Layout.ListItemExercise, null);
@@ -160,7 +166,7 @@ namespace FitnessTACKer.Adapter
                 {
                     workoutViewHolder.MoreOptionsButton.Visibility = ViewStates.Visible;
                     workoutViewHolder.MoreOptionsMenu.Visibility = ViewStates.Gone;
-                    Toast.MakeText(context, context.GetString(Resource.String.workout_saved, workoutViewHolder.Title.Text.ToString()), ToastLength.Long).Show(); 
+                    Toast.MakeText(context, context.GetString(Resource.String.workout_saved, workoutViewHolder.Title.Text.ToString()), ToastLength.Long).Show();
                 };
             }
             if (!workoutViewHolder.EditWorkoutBtn.HasOnClickListeners)
@@ -179,11 +185,12 @@ namespace FitnessTACKer.Adapter
             if (edit)
             {
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Visible;
+                //workoutHolder.SaveChangesBtn.Visibility = ViewStates.Visible;
 
                 workoutHolder.LayoutTitleAndMenu.Visibility = ViewStates.Gone;
                 workoutHolder.Exercises.Visibility = ViewStates.Gone;
                 workoutHolder.AddExerciseBtn.Visibility = ViewStates.Gone;
-                
+
                 workoutHolder.ExpandedLayout.Visibility = ViewStates.Visible;
                 workoutHolder.ExpandedLayout.RemoveAllViews();
 
@@ -191,18 +198,19 @@ namespace FitnessTACKer.Adapter
                 workoutHolder.NewWorkoutName.RequestFocus();
 
                 String[] exercises = null;
-                if (data[position].exercises != null && data[position].exercises.Length>0)
+                if (data[position].exercises != null && data[position].exercises.Length > 0)
                 {
                     exercises = data[position].exercises.Split('\n');
                 }
 
                 LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent)
                 {
-                    TopMargin = 4, BottomMargin = 4
+                    TopMargin = 4,
+                    BottomMargin = 4
                 };
 
                 bool itemDeleted = false;
-                if (exercises!=null)
+                if (exercises != null)
                 {
                     for (int i = 0; i < exercises.Length; i++)
                     {
@@ -235,16 +243,30 @@ namespace FitnessTACKer.Adapter
                 {
                     workoutHolder.DeleteWorkoutBtn.Click += delegate (object s, EventArgs e2) { ShowDialogDeleteWorkout(position); };
                 }
-                
-            } else
+
+                //if (!workoutHolder.SaveChangesBtn.HasOnClickListeners)
+                //{
+                //    workoutHolder.SaveChangesBtn.Click += delegate (object saveChangesSender, EventArgs eSaveChanges) {
+                //        SaveChangesOnClick(saveChangesSender, eSaveChanges);
+                //    };
+                //}
+
+            }
+            else
             {
                 workoutHolder.LayoutTitleAndMenu.Visibility = ViewStates.Visible;
                 workoutHolder.Exercises.Visibility = ViewStates.Visible;
                 workoutHolder.AddExerciseBtn.Visibility = ViewStates.Visible;
 
+                //workoutHolder.SaveChangesBtn.Visibility = ViewStates.Gone;
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Gone;
                 workoutHolder.ExpandedLayout.Visibility = ViewStates.Gone;
             }
+        }
+
+        public void SaveChangesOnClick(object sender, EventArgs e)
+        {
+
         }
 
         // edit mode for newly added workout
@@ -256,14 +278,14 @@ namespace FitnessTACKer.Adapter
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Visible;
 
                 ShowKeyboard(workoutHolder.NewWorkoutName);
-                
+
                 workoutHolder.NewWorkoutName.FocusChange += new EventHandler<View.FocusChangeEventArgs>((sender, e) =>
                 {
                     string newWorkoutName = workoutHolder.NewWorkoutName.Text.ToString();
-                    if (!e.HasFocus && newWorkoutName.Length>0)
+                    if (!e.HasFocus && newWorkoutName.Length > 0)
                     {
                         // save new workout name
-                        if (position > -1 && data.Count>position)
+                        if (position > -1 && data.Count > position)
                         {
                             data[position].title = newWorkoutName;
                             data[position].editModeNewWorkout = false;
@@ -294,13 +316,14 @@ namespace FitnessTACKer.Adapter
                 {
                     workoutHolder.DeleteWorkoutBtn.Click += delegate (object senderDeleteWorkout, EventArgs eDeleteWorkout)
                     {
-                        if (workoutHolder.NewWorkoutName.Text.ToString().Length>0)
+                        if (workoutHolder.NewWorkoutName.Text.ToString().Length > 0)
                         {
                             string newWorkoutName = workoutHolder.NewWorkoutName.Text.ToString();
                             ShowConfirmDialog(context.GetString(Resource.String.confirm_save_changes),
                                 context.GetString(Resource.String.save), context.GetString(Resource.String.dont_save), position,
                                 newWorkoutName, workoutHolder);
-                        } else
+                        }
+                        else
                         {
                             data.RemoveAt(position);
                             NotifyItemRemoved(position);
@@ -309,13 +332,14 @@ namespace FitnessTACKer.Adapter
                     };
                 }
 
-            } else
+            }
+            else
             {
                 workoutHolder.EditModeRoot.Visibility = ViewStates.Gone;
                 workoutHolder.RootWorkoutLayout.Visibility = ViewStates.Visible;
             }
         }
-        
+
         private void ShowDialogDeleteWorkout(int position)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -340,7 +364,7 @@ namespace FitnessTACKer.Adapter
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.SetTitle(title);
-            builder.SetPositiveButton(pos, delegate(object s, DialogClickEventArgs ev) {
+            builder.SetPositiveButton(pos, delegate (object s, DialogClickEventArgs ev) {
                 // save new workout name
                 data[adapterPosition].title = newWorkoutName;
                 data[adapterPosition].editModeNewWorkout = false;
@@ -404,10 +428,10 @@ namespace FitnessTACKer.Adapter
                     HideKeyboard(exerciseEdittext);
                 };
             };
-            
+
         }
 
-        public void OnAddExerciseEvent(EditText exerciseEdittext, int currentPosition, 
+        public void OnAddExerciseEvent(EditText exerciseEdittext, int currentPosition,
             LinearLayout currentExpandedLayout, LinearLayout.LayoutParams ll, int index, CardView rootCardView)
         {
             HideKeyboard(exerciseEdittext);
@@ -454,7 +478,7 @@ namespace FitnessTACKer.Adapter
             var imm = (InputMethodManager)context.GetSystemService(Context.InputMethodService);
             imm.HideSoftInputFromWindow(et.WindowToken, 0);
         }
-        
+
         public void ExerciseItemOnClick(object sender, EventArgs e)
         {
             int senderId = ((View)sender).Id;
@@ -465,6 +489,11 @@ namespace FitnessTACKer.Adapter
                 ll.TopMargin = 8; ll.BottomMargin = 8;
                 setView.LayoutParameters = ll;
                 ((((Button)sender).Parent as LinearLayout).GetChildAt(2) as LinearLayout).AddView(setView);
+                EditText target = setView.FindViewById<EditText>(Resource.Id.target_weight);
+                EditText final = setView.FindViewById<EditText>(Resource.Id.final_weight);
+                setKeyboard(target);
+                setKeyboard(final);
+
             }
             else if (senderId == Resource.Id.root_exercise_item)
             {
@@ -474,6 +503,11 @@ namespace FitnessTACKer.Adapter
                     ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set).Visibility = ViewStates.Visible;
                     ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set_title).Visibility = ViewStates.Visible;
                     ((LinearLayout)sender).FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Visible;
+                    //set keyboard for both EditTexts where user enters weight
+                    EditText target = ((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target_weight);
+                    EditText final = ((LinearLayout)sender).FindViewById<EditText>(Resource.Id.final_weight);
+                    setKeyboard(target);
+                    setKeyboard(final);
                 }
                 else
                 {
@@ -483,47 +517,30 @@ namespace FitnessTACKer.Adapter
                     ((LinearLayout)sender).FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Gone;
                     var im = ((InputMethodManager)context.GetSystemService(Android.Content.Context.InputMethodService));
 
-                    //if (!v.FindViewById<EditText>(Resource.Id.target1).HasFocus)
-                    //{
-                    //    im.HideSoftInputFromWindow(v.FindViewById<EditText>(Resource.Id.target1).WindowToken, 0);
-                    //};
-                }
-            }
-            else if (v.Id == Resource.Id.add_set_btn)
-            {
-                
-                View setView = LayoutInflater.From(context).Inflate(Resource.Layout.ExerciseSetItem, null);
-                LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-                ll.TopMargin = 8; ll.BottomMargin = 8;
-                setView.LayoutParameters = ll;
-                ((v.Parent as LinearLayout).GetChildAt(2) as LinearLayout).AddView(setView);
-
-                //set keyboard for both EditTexts where user enters weight
-                EditText target = setView.FindViewById<EditText>(Resource.Id.target_weight);
-                EditText final = setView.FindViewById<EditText>(Resource.Id.final_weight);
-                setKeyboard(target);
-                setKeyboard(final);
-            }
-                    if (!((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target1).HasFocus)
+                    if (!((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target_weight).HasFocus)
                     {
-                        im.HideSoftInputFromWindow(((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target1).WindowToken, 0);
+                        im.HideSoftInputFromWindow(((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target_weight).WindowToken, 0);
                     };
                 }
             }
-            
+
         }
 
-        private void SetKeyboard(EditText target){
+        private void setKeyboard(EditText target)
+        {
+
+            //.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
             target.SetRawInputType(InputTypes.ClassText);
             target.SetTextIsSelectable(true);
             //InputConnection ic = (InputConnection) target.OnCreateInputConnection(new EditorInfo());
             //weight_keyboard.setInputConnection(ic);
-            target.Click += delegate
+            target.Touch += delegate
             {
-                weight_keyboard.setCurrentEditText(target);
+                target.SetBackgroundResource(Resource.Drawable.weight_outline);
+                keyboard.setCurrentEditText(target);
                 InputMethodManager imm = (InputMethodManager)context.GetSystemService(Context.InputMethodService);
-                imm.HideSoftInputFromWindow(view.WindowToken, 0);
-                weight_keyboard.Visibility = ViewStates.Visible;
+                imm.HideSoftInputFromWindow(root_view.WindowToken, 0);
+                keyboard.Visibility = ViewStates.Visible;
             };
         }
 
@@ -543,6 +560,6 @@ namespace FitnessTACKer.Adapter
                 ItemClick(this, position);
             }
         }
-        
+
     }
 }

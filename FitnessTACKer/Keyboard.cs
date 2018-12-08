@@ -203,6 +203,7 @@ namespace FitnessTACKer
 
             if (id.Equals("clear"))
             {
+                editText.Text = 0.ToString();
                 clear();
 
             }
@@ -210,7 +211,9 @@ namespace FitnessTACKer
             {
                 double res = plate45 * 45 + plate35 * 35 + plate25 * 25 + plate10 * 10 + plate5 * 5 + plate2_5 * 2.5 + barbell * 45 + ez * 25;
                 editText.Text = (res.ToString());
-
+                this.clear();
+                editText.SetBackgroundResource(Resource.Drawable.input_box_background);
+                keyboard.Visibility = ViewStates.Gone;
             }
             //else if (v.Id == Resource.Id.button_delete)
             //{
