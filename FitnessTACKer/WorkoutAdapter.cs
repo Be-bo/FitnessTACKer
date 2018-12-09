@@ -215,7 +215,7 @@ namespace FitnessTACKer.Adapter
                     for (int i = 0; i < exercises.Length; i++)
                     {
                         View editModeExerciseView = LayoutInflater.From(context).Inflate(Resource.Layout.ListItemExerciseEditMode, null);
-                        editModeExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text = exercises[i];
+                        editModeExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext).Text = exercises[i];
                         ImageButton deleteExerciseBtn = editModeExerciseView.FindViewById<ImageButton>(Resource.Id.delete_exercise_btn);
                         if (!deleteExerciseBtn.HasOnClickListeners)
                         {
@@ -392,7 +392,8 @@ namespace FitnessTACKer.Adapter
             // save view's current position for later use
             int viewPosition = currentExpandedLayout.ChildCount - 1;
 
-            EditText exerciseEdittext = newExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext);
+            AutoCompleteTextView exerciseEdittext = newExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext);
+
             ShowKeyboard(exerciseEdittext);
 
             ConfigureExerciseTrashcanListener(newExerciseView, viewPosition, currentExpandedLayout, exerciseEdittext);
@@ -536,7 +537,6 @@ namespace FitnessTACKer.Adapter
             //weight_keyboard.setInputConnection(ic);
             target.Touch += delegate
             {
-                target.SetBackgroundResource(Resource.Drawable.weight_outline);
                 keyboard.setCurrentEditText(target);
                 InputMethodManager imm = (InputMethodManager)context.GetSystemService(Context.InputMethodService);
                 imm.HideSoftInputFromWindow(root_view.WindowToken, 0);

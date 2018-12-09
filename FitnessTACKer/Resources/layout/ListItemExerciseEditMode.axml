@@ -24,7 +24,7 @@
 			android:layout_gravity="center"
 		/>   
 
-		<EditText
+		<AutoCompleteTextView
 		android:id="@+id/exercise_name_edittext"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"

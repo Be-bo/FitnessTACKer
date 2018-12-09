@@ -71,7 +71,11 @@ namespace FitnessTACKer
 
         public void setCurrentEditText(EditText ed)
         {
+            if (editText != null) { 
+            this.editText.SetBackgroundResource(Resource.Drawable.input_box_background);
+            }
             this.editText = ed;
+            editText.SetBackgroundResource(Resource.Drawable.weight_outline);
         }
 
         public void init(Context context, IAttributeSet attrs){
@@ -102,17 +106,50 @@ namespace FitnessTACKer
 
             // set button click listeners
 
-            //mButton1.SetOnClickListener(this);
-            //mButton2.SetOnClickListener(this);
-            //mButton3.SetOnClickListener(this);
-            //mButton4.SetOnClickListener(this);
-            //mButton5.SetOnClickListener(this);
-            //mButton6.SetOnClickListener(this);
-            //mButton7.SetOnClickListener(this);
-            //mButton8.SetOnClickListener(this);
-            //mButton9.SetOnClickListener(this);
-            //mButton0.SetOnClickListener(this);
-            //button_delete.SetOnClickListener(this);
+            mButton1.Click += delegate
+            {
+                this.addNum(1);
+            };
+            mButton2.Click += delegate
+            {
+                this.addNum(2);
+            };
+            mButton3.Click += delegate
+            {
+                this.addNum(3);
+            };
+            mButton4.Click += delegate
+            {
+                this.addNum(4);
+            };
+            mButton5.Click += delegate
+            {
+                this.addNum(5);
+            };
+            mButton6.Click += delegate
+            {
+                this.addNum(6);
+            };
+            mButton7.Click += delegate
+            {
+                this.addNum(7);
+            };
+            mButton8.Click += delegate
+            {
+                this.addNum(8);
+            };
+            mButton9.Click += delegate
+            {
+                this.addNum(9);
+            };
+            mButton0.Click += delegate
+            {
+                this.addNum(0);
+            };
+            button_delete.Click += delegate
+            {
+                this.removeLast();
+            };
 
             button_clear.Click += delegate
             {
@@ -171,6 +208,26 @@ namespace FitnessTACKer
             keyValues.Put(Resource.Id.button_8, "8");
             keyValues.Put(Resource.Id.button_9, "9");
             keyValues.Put(Resource.Id.button_0, "0");
+        }
+
+        private void addNum(int num)
+        {
+            String text = editText.Text;
+            if(text.Length < 3)
+            {
+                text = text + num.ToString();
+            }
+            editText.Text = text;
+        }
+
+        private void removeLast()
+        {
+            String text = editText.Text;
+            if (text.Length > 0)
+            {
+                text = text.Remove(text.Length - 1, 1);
+                editText.Text = text;
+            }
         }
 
         private void clear()
