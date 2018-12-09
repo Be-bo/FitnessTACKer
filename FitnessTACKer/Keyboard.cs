@@ -194,6 +194,7 @@ namespace FitnessTACKer
             hide_keyboard.Click += delegate
             {
                 keyboard.Visibility = ViewStates.Gone;
+                editText.SetBackgroundResource(Resource.Drawable.input_box_background);
                 this.clear();
             };
 

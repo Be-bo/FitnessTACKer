@@ -280,6 +280,7 @@ namespace FitnessTACKer.Adapter
                         View editModeExerciseView = LayoutInflater.From(context).Inflate(Resource.Layout.ListItemExerciseEditMode, null);
                         editModeExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext).Text = exercises[i];
                         ImageButton deleteExerciseBtn = editModeExerciseView.FindViewById<ImageButton>(Resource.Id.delete_exercise_btn);
+                        SetSuggestions(editModeExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext));
 
                         editModeExerciseView.LayoutParameters = ll;
                         workoutHolder.ExpandedLayout.AddView(editModeExerciseView);
@@ -333,7 +334,7 @@ namespace FitnessTACKer.Adapter
                         {
                             editModeExerciseView.FindViewById<ImageButton>(Resource.Id.delete_exercise_btn).Click -= delegate (object sender, EventArgs e)
                             {
-                                int indexToDelete = FindChildIndexByExerciseName(workoutHolder.ExpandedLayout, editModeExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text);
+                                int indexToDelete = FindChildIndexByExerciseName(workoutHolder.ExpandedLayout, editModeExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext).Text);
                                 if (indexToDelete != -1)
                                 {
                                     DeleteExerciseEditModeOnClick(sender, e, workoutHolder.ExpandedLayout, indexToDelete);
@@ -362,7 +363,7 @@ namespace FitnessTACKer.Adapter
         {
             deleteExerciseBtn.Click += delegate (object sender, EventArgs e)
             {
-                int indexToDelete = FindChildIndexByExerciseName(expandedLayout, editModeExerciseView.FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text);
+                int indexToDelete = FindChildIndexByExerciseName(expandedLayout, editModeExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext).Text);
                 if (indexToDelete != -1)
                 {
                     DeleteExerciseEditModeOnClick(sender, e, expandedLayout, indexToDelete);
@@ -374,7 +375,7 @@ namespace FitnessTACKer.Adapter
         {
             for (int i=0; i<expandedLayout.ChildCount; i++)
             {
-                if (expandedLayout.GetChildAt(i).FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text == exerciseName)
+                if (expandedLayout.GetChildAt(i).FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext).Text == exerciseName)
                     return i;
             }
             return -1;
@@ -398,7 +399,7 @@ namespace FitnessTACKer.Adapter
                 data[position].exercises = "";
                 for (int i = 0; i < workoutHolder.ExpandedLayout.ChildCount; i++)
                 {
-                    string exercise = workoutHolder.ExpandedLayout.GetChildAt(i).FindViewById<EditText>(Resource.Id.exercise_name_edittext).Text.ToString();
+                    string exercise = workoutHolder.ExpandedLayout.GetChildAt(i).FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext).Text.ToString();
                     if (exercise.Length > 0)
                     {
                         data[position].exercises += exercise + (i == workoutHolder.ExpandedLayout.ChildCount - 1 ? "" : "\n"); // TODO fix this ?
@@ -596,6 +597,7 @@ namespace FitnessTACKer.Adapter
             int viewPosition = currentExpandedLayout.ChildCount - 1;
 
             AutoCompleteTextView exerciseEdittext = newExerciseView.FindViewById<AutoCompleteTextView>(Resource.Id.exercise_name_edittext);
+            SetSuggestions(exerciseEdittext);
 
             ShowKeyboard(exerciseEdittext);
 
@@ -619,6 +621,21 @@ namespace FitnessTACKer.Adapter
             };
             // exerciseEdittext.FocusChange +=
 
+        }
+
+        private void SetSuggestions(AutoCompleteTextView text)
+        {
+            //Suggestions
+            var autoCompleteOptions = new String[]{"Lat Pulldown", "Barbell Bench Press", "Dumbbell Bench Press", "Pull Up", "Chin Up", "Dumbbell Shoulder Press",
+            "Dumbbell Lateral Raise", "Lateral Raise Machine", "Dumbbell Front Raise", "Dumbbell Row", "Barbell Row", "Rowing Machine", "Rear Delt Fly Machine", "Chest Fly Machine",
+            "Pec Deck", "Deadlift", "Barbell Back Squat", "Barbell Front Squat", "Leg Press Horizontal", "Leg Press Vertical", "Calf Raise", "Glute Machine", "Glute Bridge",
+            "Arnold Press", "T Bar Row", "Cable Fly", "Dumbbell Kick Back", "Narrow Bench Press", "Rope Pushdown", "Dip", "Push Up", "Straight Bar Pushdown", "Barbell Curl",
+            "Dumbbell Curl", "Hammer Curl", "EZ Bar Curl", "Incline Barbell Bench Press", "Decline Barbell Bench Press", "Incline Dumbbell Press", "Decline Dumbbell Press",
+            "Dumbbell Fly", "Farmer Walk", "Over Head Press", "Seated Dumbbell Curl", "Concentration Curl", "Hack Squat", "Smith Machine Lunge", "Smith Machine Press",
+            "Smith Machine Over Head Press", "Seated Calf Raise", "Crunch", "Sit Up", "Leg Raise", "Handing Leg Raise", "Rope Crunch", "Rope Tricep Extension",
+            "Behind Head Dumbbell Extension", "Read Delt Row", "Dumbbell Shrug", "Hyperextension"};
+            ArrayAdapter autoCompleteAdapter = new ArrayAdapter(context, Android.Resource.Layout.SimpleDropDownItem1Line, autoCompleteOptions);
+            text.Adapter = autoCompleteAdapter;
         }
 
         private void ConfigureExerciseTrashcanListener(View newExerciseView, int viewPosition, LinearLayout currentExpandedLayout, EditText exerciseEdittext)
