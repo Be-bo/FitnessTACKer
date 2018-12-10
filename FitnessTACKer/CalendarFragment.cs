@@ -39,11 +39,11 @@ namespace FitnessTACKer
             calendar = view.FindViewById<CalendarView>(Resource.Id.calendarView1);
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView1);
 
-            Keyboard keyboard = (Keyboard)Arguments.GetSerializable("keyboard");
-
             RecyclerViewData = new List<WorkoutItem>();
+          
 
-            AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData,keyboard,view);
+            AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData);
+            
 
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));

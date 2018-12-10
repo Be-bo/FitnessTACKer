@@ -53,9 +53,7 @@
 		android:animateLayoutChanges="true"
 		android:visibility="gone">
 
-		<include
-       
-        layout="@layout/ExerciseSetItem"/>
+		<include layout="@layout/ExerciseSetItem"/>
 
 		</LinearLayout>
 

@@ -11,7 +11,7 @@
 				android:inputType="number"
 				android:background="@drawable/input_box_background"
 				android:gravity="center"
-				android:id="@+id/target_sets"
+				android:id="@+id/target1"
 				/>
 
 			<ImageView
@@ -27,7 +27,6 @@
 				android:background="@drawable/input_box_background"
 				android:layout_marginRight="8dp"
 				android:gravity="center"
-				android:id="@+id/target_weight"
 				/>
 
 			<EditText
@@ -37,7 +36,6 @@
 			    android:layout_marginLeft="8dp"
 				android:background="@drawable/input_box_background"
 				android:gravity="center"
-				android:id="@+id/final_sets"
 				/>
 
 			<ImageView
@@ -52,6 +50,5 @@
 				android:inputType="number"
 				android:background="@drawable/input_box_background"
 				android:gravity="center"
-				android:id="@+id/final_weight"
 				/>
 </LinearLayout>
