@@ -16,5 +16,15 @@
 		android:layout_weight="1"
 		android:scrollbars="vertical"
 		android:id="@+id/recyclerView1"/>
-	
+	<Button	android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:padding="8dp"
+		android:layout_marginBottom="8dp"
+		android:drawableLeft="@drawable/ic_add_white_36dp"
+		android:layout_gravity="bottom|center_horizontal"
+		android:text="@string/add_workout"
+		android:background="@color/primary"
+		android:textColor="#ffffff"
+		android:id="@+id/add_workout_btn"
+		/>
 </LinearLayout>
