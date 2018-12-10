@@ -34,6 +34,8 @@ namespace FitnessTACKer
 
             LoadFragment(Resource.Id.action_home);
 
+            Window.SetSoftInputMode(SoftInput.AdjustResize);
+
         }
 
         private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)

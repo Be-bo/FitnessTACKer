@@ -39,7 +39,6 @@ namespace FitnessTACKer
         private ImageButton barbell_button;
         private ImageButton ez_button;
         private ImageButton hide_keyboard;
-        private TextView result;
         private Button button_clear;
         private Button button_done;
         private ImageButton button_delete;
@@ -52,6 +51,7 @@ namespace FitnessTACKer
         private int barbell = 0;
         private int ez = 0;
         public View keyboard;
+        private EditText editText;
        
         public Keyboard():
         base(null){}
@@ -69,7 +69,16 @@ namespace FitnessTACKer
             init(context, attrs);
         }
 
-       public void init(Context context, IAttributeSet attrs){
+        public void setCurrentEditText(EditText ed)
+        {
+            if (editText != null) { 
+            this.editText.SetBackgroundResource(Resource.Drawable.input_box_background);
+            }
+            this.editText = ed;
+            editText.SetBackgroundResource(Resource.Drawable.weight_outline);
+        }
+
+        public void init(Context context, IAttributeSet attrs){
             //initialize buttons
             keyboard = LayoutInflater.From(context).Inflate(Resource.Layout.keyboard, this, true);
             mButton1 = FindViewById<Button>(Resource.Id.button_1);
@@ -90,7 +99,6 @@ namespace FitnessTACKer
             plate10_button = FindViewById<ImageButton>(Resource.Id.plate10);
             plate5_button = FindViewById<ImageButton>(Resource.Id.plate5);
             plate2_5_button = FindViewById<ImageButton>(Resource.Id.plate2_5);
-            result = FindViewById<TextView>(Resource.Id.result);
             barbell_button = FindViewById<ImageButton>(Resource.Id.barbell);
             ez_button = FindViewById<ImageButton>(Resource.Id.ez);
             button_delete = FindViewById<ImageButton>(Resource.Id.button_delete);
@@ -98,17 +106,50 @@ namespace FitnessTACKer
 
             // set button click listeners
 
-            //mButton1.SetOnClickListener(this);
-            //mButton2.SetOnClickListener(this);
-            //mButton3.SetOnClickListener(this);
-            //mButton4.SetOnClickListener(this);
-            //mButton5.SetOnClickListener(this);
-            //mButton6.SetOnClickListener(this);
-            //mButton7.SetOnClickListener(this);
-            //mButton8.SetOnClickListener(this);
-            //mButton9.SetOnClickListener(this);
-            //mButton0.SetOnClickListener(this);
-            //button_delete.SetOnClickListener(this);
+            mButton1.Click += delegate
+            {
+                this.addNum(1);
+            };
+            mButton2.Click += delegate
+            {
+                this.addNum(2);
+            };
+            mButton3.Click += delegate
+            {
+                this.addNum(3);
+            };
+            mButton4.Click += delegate
+            {
+                this.addNum(4);
+            };
+            mButton5.Click += delegate
+            {
+                this.addNum(5);
+            };
+            mButton6.Click += delegate
+            {
+                this.addNum(6);
+            };
+            mButton7.Click += delegate
+            {
+                this.addNum(7);
+            };
+            mButton8.Click += delegate
+            {
+                this.addNum(8);
+            };
+            mButton9.Click += delegate
+            {
+                this.addNum(9);
+            };
+            mButton0.Click += delegate
+            {
+                this.addNum(0);
+            };
+            button_delete.Click += delegate
+            {
+                this.removeLast();
+            };
 
             button_clear.Click += delegate
             {
@@ -153,6 +194,8 @@ namespace FitnessTACKer
             hide_keyboard.Click += delegate
             {
                 keyboard.Visibility = ViewStates.Gone;
+                editText.SetBackgroundResource(Resource.Drawable.input_box_background);
+                this.clear();
             };
 
             // map buttons IDs to input strings
@@ -166,6 +209,26 @@ namespace FitnessTACKer
             keyValues.Put(Resource.Id.button_8, "8");
             keyValues.Put(Resource.Id.button_9, "9");
             keyValues.Put(Resource.Id.button_0, "0");
+        }
+
+        private void addNum(int num)
+        {
+            String text = editText.Text;
+            if(text.Length < 3)
+            {
+                text = text + num.ToString();
+            }
+            editText.Text = text;
+        }
+
+        private void removeLast()
+        {
+            String text = editText.Text;
+            if (text.Length > 0)
+            {
+                text = text.Remove(text.Length - 1, 1);
+                editText.Text = text;
+            }
         }
 
         private void clear()
@@ -198,15 +261,17 @@ namespace FitnessTACKer
 
             if (id.Equals("clear"))
             {
+                editText.Text = 0.ToString();
                 clear();
-                result.Text = "0 lbs";
 
             }
             else if (id.Equals("done"))
             {
                 double res = plate45 * 45 + plate35 * 35 + plate25 * 25 + plate10 * 10 + plate5 * 5 + plate2_5 * 2.5 + barbell * 45 + ez * 25;
-                result.Text = (res.ToString() + " lbs");
-
+                editText.Text = (res.ToString());
+                this.clear();
+                editText.SetBackgroundResource(Resource.Drawable.input_box_background);
+                keyboard.Visibility = ViewStates.Gone;
             }
             //else if (v.Id == Resource.Id.button_delete)
             //{

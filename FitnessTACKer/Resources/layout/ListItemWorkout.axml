@@ -19,13 +19,16 @@
 			layout="@layout/workout_item_dialog" android:id="@+id/more_options_menu" 
 			android:layout_gravity="right" android:visibility="gone"/>
 	
+	<LinearLayout
+	android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:orientation="vertical">
 
 	<LinearLayout
 		android:id="@+id/layout_edit_mode"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
-		
 		>
 
 		<ImageButton android:id="@+id/delete_workout_btn"
@@ -66,7 +69,7 @@
 		android:layout_height="wrap_content" 
 		android:animateLayoutChanges="true">
 
-		<LinearLayout
+		<LinearLayout android:id="@+id/linearlayout_workouttitle_menu"
 			android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
 			
 			<TextView
@@ -133,6 +136,20 @@
 
   </LinearLayout>
 
- 
+		<Button
+			android:id="@+id/save_changes_btn"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#ffffff"
+			android:background="@drawable/action_button_selector"
+			android:text="Save Changes"
+			android:paddingRight="16dp"
+			android:paddingLeft="16dp"
+			android:layout_gravity="center"
+			android:visibility="gone"
+			android:layout_marginBottom="8dp"
+		/>
+
+ </LinearLayout>
 
 </android.support.v7.widget.CardView>
