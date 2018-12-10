@@ -48,15 +48,15 @@ namespace FitnessTACKer.Adapter
 
             if (data[position].editModeNewWorkout)
             {
+                // ResetListeners(workoutHolder, position);
                 ToggleEditModeExisting(false, workoutHolder, position);
                 ToggleEditModeNewWorkout(true, workoutHolder, position);
-                ResetListeners(workoutHolder, position);
 
             } else if (data[position].editModeExisting)
             {
+                // ResetListeners(workoutHolder, position);
                 ToggleEditModeNewWorkout(false, workoutHolder, position);
                 ToggleEditModeExisting(true, workoutHolder, position);
-                ResetListeners(workoutHolder, position);
             }
             else
             {
@@ -193,17 +193,20 @@ namespace FitnessTACKer.Adapter
                 for (int i = 0; i < exercisesList.Length; i++)
                 {
                     View exerciseView = workoutHolder.ExpandedLayout.GetChildAt(i);
-                    LinearLayout rootExerciseItem = exerciseView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item);
-                    Button addSetBtn = exerciseView.FindViewById<Button>(Resource.Id.add_set_btn);
-                    
-                    if (rootExerciseItem != null && rootExerciseItem.HasOnClickListeners)
+                    if (exerciseView != null)
                     {
-                        rootExerciseItem.Click -= delegate (object rootSender, EventArgs rootE) { ExerciseItemOnClick(rootSender, rootE); };
-                    }
+                        LinearLayout rootExerciseItem = exerciseView.FindViewById<LinearLayout>(Resource.Id.root_exercise_item);
+                        Button addSetBtn = exerciseView.FindViewById<Button>(Resource.Id.add_set_btn);
 
-                    if (addSetBtn != null && addSetBtn.HasOnClickListeners)
-                    {
-                        addSetBtn.Click -= delegate (object addSetSender, EventArgs addSetE) { ExerciseItemOnClick(addSetSender, addSetE); };
+                        if (rootExerciseItem != null && rootExerciseItem.HasOnClickListeners)
+                        {
+                            rootExerciseItem.Click -= delegate (object rootSender, EventArgs rootE) { ExerciseItemOnClick(rootSender, rootE); };
+                        }
+
+                        if (addSetBtn != null && addSetBtn.HasOnClickListeners)
+                        {
+                            addSetBtn.Click -= delegate (object addSetSender, EventArgs addSetE) { ExerciseItemOnClick(addSetSender, addSetE); };
+                        }
                     }
                 }
             }
@@ -294,13 +297,10 @@ namespace FitnessTACKer.Adapter
                 {
                     workoutHolder.DeleteWorkoutBtn.Click += delegate (object s, EventArgs e2) { ShowDialogDeleteWorkout(position); };
                 }
-            else
-                if (!workoutHolder.SaveChangesBtn.HasOnClickListeners)
-                {
-                    workoutHolder.SaveChangesBtn.Click += delegate (object saveChangesSender, EventArgs eSaveChanges) {
+
+                workoutHolder.SaveChangesBtn.Click += delegate (object saveChangesSender, EventArgs eSaveChanges) {
                         SaveChangesOnClick(saveChangesSender, eSaveChanges, workoutHolder, position);
                     };
-                }
                 
             } else
             {
@@ -393,7 +393,7 @@ namespace FitnessTACKer.Adapter
 
         public void SaveChangesOnClick(object sender, EventArgs e, WorkoutViewHolder workoutHolder, int position)
         {
-            if (position > -1 && position < data.Count)
+            try
             {
                 data[position].title = workoutHolder.NewWorkoutName.Text.ToString();
                 data[position].exercises = "";
@@ -407,12 +407,10 @@ namespace FitnessTACKer.Adapter
                 }
                 data[position].editModeExisting = false;
                 NotifyItemChanged(position);
+            } catch (Exception error)
+            {
+                Log.Error("SHIT", "some shit happened "+error.Message);
             }
-        }
-
-        public void SaveChangesOnClick(object sender, EventArgs e)
-        {
-
         }
 
         // edit mode for newly added workout
