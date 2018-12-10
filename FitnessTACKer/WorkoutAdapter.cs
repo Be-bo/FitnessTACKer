@@ -732,7 +732,8 @@ namespace FitnessTACKer.Adapter
                 else
                 {
                     // collapse
-                    ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set).Visibility = ViewStates.Gone;
+                    LinearLayout setsLayout = ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set);
+                    setsLayout.Visibility = ViewStates.Gone;
                     ((LinearLayout)sender).FindViewById<LinearLayout>(Resource.Id.layout_set_title).Visibility = ViewStates.Gone;
                     ((LinearLayout)sender).FindViewById<Button>(Resource.Id.add_set_btn).Visibility = ViewStates.Gone;
                     var im = ((InputMethodManager)context.GetSystemService(Android.Content.Context.InputMethodService));
@@ -741,26 +742,63 @@ namespace FitnessTACKer.Adapter
                     {
                         im.HideSoftInputFromWindow(((LinearLayout)sender).FindViewById<EditText>(Resource.Id.target_weight).WindowToken, 0);
                     };
+
+                    CleanUpEmptySets(setsLayout, 1);
                 }
             }
 
         }
 
+        private void CleanUpEmptySets(LinearLayout parent, int maxCount)
+        {
+            if (maxCount <= parent.ChildCount)
+            {
+                for (int i = 1; i < parent.ChildCount; i++)
+                {
+                    View setView = parent.GetChildAt(i);
+                    if (setView.FindViewById<EditText>(Resource.Id.target_sets).Text.Length == 0 &&
+                        setView.FindViewById<EditText>(Resource.Id.target_weight).Text.Length == 0 &&
+                        setView.FindViewById<EditText>(Resource.Id.final_sets).Text.Length == 0 &&
+                        setView.FindViewById<EditText>(Resource.Id.final_weight).Text.Length == 0)
+                    {
+                        parent.RemoveViewAt(i);
+                        maxCount--;
+                        break;
+                    } else if (parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.target_sets).Text.Length == 0 &&
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.target_weight).Text.Length == 0 &&
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.final_sets).Text.Length == 0 &&
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.final_weight).Text.Length == 0)
+                    {
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.target_sets).Text = setView.FindViewById<EditText>(Resource.Id.target_sets).Text;
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.target_weight).Text = setView.FindViewById<EditText>(Resource.Id.target_weight).Text;
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.final_sets).Text = setView.FindViewById<EditText>(Resource.Id.final_sets).Text;
+                        parent.GetChildAt(0).FindViewById<EditText>(Resource.Id.final_weight).Text = setView.FindViewById<EditText>(Resource.Id.final_weight).Text;
+                        parent.RemoveViewAt(i);
+                        maxCount--;
+                        break;
+                    }
+                }
+                CleanUpEmptySets(parent, maxCount+1);
+            }
+        }
+
         private void setKeyboard(EditText target)
         {
-
-            //.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-            target.SetRawInputType(InputTypes.ClassText);
-            target.SetTextIsSelectable(true);
-            //InputConnection ic = (InputConnection) target.OnCreateInputConnection(new EditorInfo());
-            //weight_keyboard.setInputConnection(ic);
-            target.Touch += delegate
+            if (target != null)
             {
-                keyboard.setCurrentEditText(target);
-                InputMethodManager imm = (InputMethodManager)context.GetSystemService(Context.InputMethodService);
-                imm.HideSoftInputFromWindow(root_view.WindowToken, 0);
-                keyboard.Visibility = ViewStates.Visible;
-            };
+                //.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+                target.SetRawInputType(InputTypes.ClassText);
+                target.SetTextIsSelectable(true);
+                //InputConnection ic = (InputConnection) target.OnCreateInputConnection(new EditorInfo());
+                //weight_keyboard.setInputConnection(ic);
+                target.Touch += delegate
+                {
+                    keyboard.setCurrentEditText(target);
+                    InputMethodManager imm = (InputMethodManager)context.GetSystemService(Context.InputMethodService);
+                    imm.HideSoftInputFromWindow(root_view.WindowToken, 0);
+                    keyboard.Visibility = ViewStates.Visible;
+                };
+            }
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
