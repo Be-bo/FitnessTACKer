@@ -7,6 +7,9 @@ using Android.Support.V7.Widget;
 using FitnessTACKer.Adapter;
 using System;
 
+//Days that have exercises scheduled: 12, 15, 23 day of any month
+//Schedule a workout on 10 of any month, name it "Added Workout" and name one exercise "Added Exercise".
+//Once this workout is scheduled, it will be listed every time you click on 10.
 
 namespace FitnessTACKer
 {
@@ -15,6 +18,10 @@ namespace FitnessTACKer
         CalendarView calendar;
         RecyclerView recyclerView;
         private List<WorkoutItem> RecyclerViewData;
+        
+        int day = 0;
+        int tempDay = 0;
+        bool addWorkout = false;
         private WorkoutAdapter AdapterHome;
 
         public static CalendarFragment NewInstance()
@@ -33,20 +40,52 @@ namespace FitnessTACKer
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView1);
 
             RecyclerViewData = new List<WorkoutItem>();
-            AdapterHome = new WorkoutAdapter(RecyclerViewData);
+          
+
+            AdapterHome = new WorkoutAdapter(view.Context, RecyclerViewData);
+            
+
             recyclerView.SetAdapter(AdapterHome);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
 
             AdapterHome.ItemClick += OnItemClick;
             calendar.DateChange += YourCalendarView_DateChange;
-            return view;
+            SetupClickListeners(view);
 
+            return view;
         }
+
+        private void SetupClickListeners(View root)
+        {
+            root.FindViewById<Button>(Resource.Id.add_workout_btn).Click += delegate
+            {
+                // collapse previously expanded item
+                for (int i = 0; i < RecyclerViewData.Count; i++)
+                {
+                    if (RecyclerViewData[i].expanded)
+                    {
+                        RecyclerViewData[i].expanded = false;
+                        AdapterHome.NotifyItemChanged(i);
+                    }
+                }
+                // add workout button on click
+                addWorkout = true;
+                RecyclerViewData.Add(new WorkoutItem() { editMode = true });
+                AdapterHome.NotifyDataSetChanged();
+
+            };
+   
+    }
 
         void YourCalendarView_DateChange(object sender, CalendarView.DateChangeEventArgs e)
         {
             System.Console.WriteLine("Date : {0} Month : {1} Year : {2}", e.DayOfMonth, e.Month, e.Year);
             HideWorkout();
+
+            if (addWorkout && e.DayOfMonth == 10)
+            {
+                ShowWorkout0();
+            }
             if (e.DayOfMonth == 12)
             {
                 ShowWorkout1();
@@ -61,6 +100,12 @@ namespace FitnessTACKer
                 ShowWorkout2();
             }
 
+        }
+
+        public void ShowWorkout0()
+        {
+            RecyclerViewData.Add(new WorkoutItem() { title = "Added Workout", exercises = "Added Exercise", expanded = false });
+            AdapterHome.NotifyDataSetChanged();
         }
 
         public void ShowWorkout1()
