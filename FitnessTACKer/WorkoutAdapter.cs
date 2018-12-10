@@ -784,7 +784,7 @@ namespace FitnessTACKer.Adapter
 
         private void setKeyboard(EditText target)
         {
-            if (target != null)
+            if (target != null && keyboard!=null) // temporary null check until bug is fixed
             {
                 //.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                 target.SetRawInputType(InputTypes.ClassText);
