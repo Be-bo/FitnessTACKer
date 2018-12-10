@@ -3134,13 +3134,13 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090039
 			public const int collapseActionView = 2131296313;
-
+			
 			// aapt resource value: 0x7f090092
 			public const int container = 2131296402;
 			
 			// aapt resource value: 0x7f090066
 			public const int contentPanel = 2131296358;
-
+			
 			// aapt resource value: 0x7f0900d8
 			public const int content_frame = 2131296472;
 			
@@ -3329,7 +3329,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
-
+			
 			// aapt resource value: 0x7f0900fa
 			public const int mRecyclerID = 2131296506;
 			
@@ -3347,7 +3347,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090053
 			public const int mini = 2131296339;
-
+			
 			// aapt resource value: 0x7f0900d1
 			public const int more_options_btn = 2131296465;
 			
@@ -3368,7 +3368,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f09003b
 			public const int never = 2131296315;
-
+			
 			// aapt resource value: 0x7f0900cd
 			public const int new_workout_name_edittext = 2131296461;
 			
@@ -3470,7 +3470,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f09000e
 			public const int save_scale_type = 2131296270;
-
+			
 			// aapt resource value: 0x7f0900f7
 			public const int save_workout_btn = 2131296503;
 			
@@ -3587,7 +3587,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090087
 			public const int submit_area = 2131296391;
-
+			
 			// aapt resource value: 0x7f0900f5
 			public const int switchWidget = 2131296501;
 			
@@ -3614,7 +3614,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090069
 			public const int textSpacerNoTitle = 2131296361;
-
+			
 			// aapt resource value: 0x7f09009d
 			public const int text_input_password_toggle = 2131296413;
 			
@@ -3623,7 +3623,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f090015
 			public const int textinput_error = 2131296277;
-
+			
 			// aapt resource value: 0x7f0900e8
 			public const int time = 2131296488;
 			
@@ -3635,7 +3635,7 @@ namespace FitnessTACKer
 			
 			// aapt resource value: 0x7f09006f
 			public const int title_template = 2131296367;
-
+			
 			// aapt resource value: 0x7f09008e
 			public const int todays_date = 2131296398;
 			
